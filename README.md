@@ -11,7 +11,7 @@ Backend Developer with 10+ years of experience in designing and implementing sca
 ### Work Experience  
 
 **Backend Developer**  
-Safir Company | Jun 2023 – Feb 2025  
+Safirstores | Jun 2023 – Feb 2025  
 - Developed the entire backend system from scratch, including architecture design, database implementation, and API development.  
 - Built and optimized a high-performance database from the ground up, ensuring scalability and efficiency.  
 - **Increased website speed by 60%** by implementing Redis for caching and real-time data processing.  
