@@ -1,4 +1,4 @@
-Pouya Azaramnehr  
+Pouya Azaranmehr
 azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azaramnehr | Tehran, Iran  
 
 ---
