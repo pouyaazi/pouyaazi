@@ -1,5 +1,5 @@
 Pouya Azaramnehr  
-azaramnehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azaramnehr | Tehran, Iran  
+azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azaramnehr | Tehran, Iran  
 
 ---
 
@@ -136,9 +136,10 @@ Talamameh | Sep 2016 – Nov 2021
 ---
 
 ### Skills  
-- **Programming Languages**: JavaScript (Node.js), Python  
-- **Databases**: MongoDB, MySQL, Redis, Elasticsearch  
-- **Tools**: Git, Docker, FFMPEG
+- **Backend**: Node.js (Express, Nestjs), Python (Django, FastApi)
+- **Frontend**: Jquery, Vuejs (Quasar)
+- **Databases**: MongoDB, MySQL, PostgreSQL, Redis, Elasticsearch  
+- **Tools**: Git, Docker, FFMPEG, Proxmox, VMware
 - **Methodologies**: Agile, Scrum
 
 ---
@@ -148,4 +149,4 @@ Talamameh | Sep 2016 – Nov 2021
 Islamic Azad University of Khomeini Shahr | 2019  
 
 **Master of Software Engineering**  
-Islamic Azad University of Khomeini Shahr | 2023  
+Shahid Ashrafi Esfahani University | 2023  
