@@ -11,7 +11,7 @@ Backend Developer with 10+ years of experience in designing and implementing sca
 ### Work Experience  
 
 **Backend Developer**  
-Safirstores | Jun 2023 – Feb 2025  | [LINK](http://safirstores.com)
+Safirstores | Jun 2023 – Feb 2025  | [LINK](https://safirstores.com)
 - Developed the entire backend system from scratch, including architecture design, database implementation, and API development.  
 - Built and optimized a high-performance database from the ground up, ensuring scalability and efficiency.  
 - **Increased website speed by 60%** by implementing Redis for caching and real-time data processing.  
@@ -19,28 +19,28 @@ Safirstores | Jun 2023 – Feb 2025  | [LINK](http://safirstores.com)
 - Collaborated with frontend developers and DevOps teams to ensure seamless integration and optimal system performance.  
 
 **Backend Developer**  
-RedCoNet LLC | Feb 2023 – Jun 2023  | [LINK](http://safirstores.com)
+RedCoNet LLC | Feb 2023 – Jun 2023
 - Developed custom APIs for the admin panel, enabling efficient data management and system control.  
 - Implemented **Wazuh**, an open-source security monitoring tool, and integrated its APIs into the backend system for enhanced security and real-time monitoring.  
 - Collaborated with the DevOps and security teams to ensure seamless integration and optimal performance.  
 - Improved system security and monitoring capabilities, contributing to a more reliable and secure infrastructure.  
 
 **Backend Developer**  
-Moj | Oct 2022 – Dec 2022  | [LINK](http://safirstores.com)
+Moj | Oct 2022 – Dec 2022  | [LINK](https://amnmoj.com)
 - Delivered a **video streaming platform** for an Omani company within **less than one month**, meeting tight deadlines and client expectations.  
 - Developed **RESTful APIs** for the website and admin panel, enabling seamless data exchange and management functionalities.  
 - Collaborated with frontend developers and designers to ensure smooth integration and optimal performance.  
 - Ensured high-quality code and timely delivery, resulting in positive client feedback and project success.  
 
 **Backend Developer**  
-Ahan Melal | Sep 2021 – Oct 2022  | [LINK](http://safirstores.com)
+Ahan Melal | Sep 2021 – Oct 2022  | [LINK](https://ahanmelal.com)
 - Developed the company’s website from scratch, including frontend and backend functionalities, ensuring a seamless user experience.  
 - Built a **custom admin panel** to manage content, user data, and business operations efficiently.  
 - Designed and implemented a **web crawler** to extract and analyze data from competitors’ websites in the steel and iron industry.  
 - Collaborated with cross-functional teams to ensure timely delivery and alignment with business goals.  
 
 **Backend Developer**  
-Padideh Digital Agency | Apr 2019 – Nov 2021  | [LINK](http://safirstores.com)
+Padideh Digital Agency | Apr 2019 – Nov 2021  | [LINK](https://padideit.com)
 - Delivered **over 1,300 hours of programming training** to young developers, focusing on backend technologies and best practices.  
 - Programmed and managed servers for various company projects, ensuring high availability, security, and performance.  
 - Led and mentored programming teams, overseeing project timelines, code quality, and team collaboration.  
@@ -48,7 +48,7 @@ Padideh Digital Agency | Apr 2019 – Nov 2021  | [LINK](http://safirstores.com)
 - Streamlined development processes, resulting in **improved team productivity by 25%**.  
 
 **Software Developer & Co-Founder**  
-Talamameh | Sep 2016 – Nov 2021  | [LINK](http://safirstores.com)
+Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - Developed a **reservation application** for wedding halls and related wedding services, enabling seamless booking and scheduling for users.  
 - Designed and implemented the **Talamameh website**, ensuring a user-friendly interface and smooth functionality.  
 - Built a **custom admin panel** to manage reservations, user data, and business operations efficiently.  
