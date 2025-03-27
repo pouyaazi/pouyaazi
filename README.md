@@ -139,7 +139,7 @@ Talamameh | Sep 2016 – Nov 2021
 - **Backend**: Node.js (Express, Nestjs), Python (Django, FastApi)
 - **Frontend**: Jquery, Vuejs (Quasar)
 - **Databases**: MongoDB, MySQL, PostgreSQL, Redis, Elasticsearch  
-- **Tools**: Git, Docker, FFMPEG, Proxmox, VMware
+- **Tools**: Git, Docker, FFMPEG, Proxmox, VMware, Linux Ubuntu
 - **Methodologies**: Agile, Scrum
 
 ---
