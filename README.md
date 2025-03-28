@@ -58,6 +58,14 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 ---
 ### Projects
 
+**Online Cooking Learning Platform - Canada** 
+- Developed a **web-based cooking education platform** integrating live classes and on-demand tutorials.
+- Designed and implemented a **scalable backend system** using **Node.js (Express)** and **MongoDB**.
+- Built an interactive **frontend with Vue.js**, ensuring a seamless user experience.
+- Integrated **Microsoft Teams API** for scheduling and managing live cooking sessions.
+- Developed **secure authentication** and role-based access control for users and instructors.
+- Optimized API performance and database queries for improved efficiency.
+
 **Elderly Nutrition Management System - Germany** 
 - Developed a backend system for managing meal plans and dietary requirements for senior citizens.  
 - Implemented **RESTful APIs** for seamless integration with frontend and mobile applications.  
