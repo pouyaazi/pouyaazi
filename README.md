@@ -4,8 +4,7 @@ azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azara
 ---
 
 ### Professional Summary  
-Backend Developer with 10+ years of experience in designing and implementing scalable systems using Node.js, MongoDB, and Elasticsearch. Proven track record of optimizing system performance by 60% and delivering high-quality solutions in fast-paced environments. Passionate about building efficient, secure, and scalable backend systems.  
-
+Experienced **Full-Stack Developer** with expertise in **backend development (Node.js, Python)** and **frontend frameworks (Vue.js, React)**. Skilled in designing **scalable APIs**, integrating **third-party services**, and building **efficient, user-friendly web applications**. Passionate about **system optimization, DevOps, and cloud infrastructure**.  
 ---
 
 ### Work Experience  
