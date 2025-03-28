@@ -59,12 +59,9 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 ### Projects
 
 **Online Cooking Learning Platform | Canada | Client Confidential** 
-- Developed a **web-based cooking education platform** integrating live classes and on-demand tutorials.
 - Designed and implemented a **scalable backend system** using **Node.js (Express)** and **MongoDB**.
 - Built an interactive **frontend with Vue.js**, ensuring a seamless user experience.
 - Integrated **Microsoft Teams API** for scheduling and managing live cooking sessions.
-- Developed **secure authentication** and role-based access control for users and instructors.
-- Optimized API performance and database queries for improved efficiency.
 
 **Elderly Nutrition Management System | Germany | Client Confidential** 
 - Developed a backend system for managing meal plans and dietary requirements for senior citizens.  
@@ -141,6 +138,12 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - Used **FastApi** and **Beautiful Soup** for web scraping and data processing.  
 - Enhanced decision-making by providing real-time market insights.  
 
+**Self-Hosted Notification System | Iran | Client Confidential** 
+- Customized and localized **Ntfy** for a **self-hosted push notification service**.  
+- Developed a **scalable backend** using **Node.js** and optimized message delivery.  
+- Implemented **user authentication and access control** for secure notifications.  
+- Enhanced **UI/UX with Vue.js**, ensuring seamless user interaction.  
+- Optimized system performance for handling **high-volume push notifications**.
 ---
 
 ### Skills  
