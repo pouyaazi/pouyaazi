@@ -133,7 +133,7 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - Implemented **SEO best practices** to improve search engine rankings.  
 - Increased website traffic by **35%** through performance optimization.
 
-**Competitor Data Crawler | Iran**  | [LINK](https://shab.ir)
+**Competitor Data Crawler | Iran  | Client Confidential**
 - Designed and implemented a web crawler to extract and analyze competitor data in the steel and iron industry.  
 - Used **FastApi** and **Beautiful Soup** for web scraping and data processing.  
 - Enhanced decision-making by providing real-time market insights.  
@@ -144,6 +144,13 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - Implemented **user authentication and access control** for secure notifications.  
 - Enhanced **UI/UX with Vue.js**, ensuring seamless user interaction.  
 - Optimized system performance for handling **high-volume push notifications**.
+
+**Competitor Web Scraping for Hotel & Home Booking (Python) | Iran | Client Confidential** 
+- Developed a **web crawler** using **Python (Scrapy, BeautifulSoup, Selenium)** to extract competitor pricing and availability data.  
+- Implemented **multi-threaded crawling** for high-performance data collection.  
+- Designed a **MongoDB/MySQL** database schema for storing and analyzing scraped data.  
+- Automated data extraction with **scheduled tasks (Celery, Cron Jobs)** for real-time updates.  
+
 ---
 
 ### Skills  
