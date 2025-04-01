@@ -154,7 +154,7 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - Designed a **MongoDB/MySQL** database schema for storing and analyzing scraped data.  
 - Automated data extraction with **scheduled tasks (Celery, Cron Jobs)** for real-time updates.
 
-**ZargarChi – Custom Gold Jewelry Manufacturing Platform | Iran | Client Confidential**
+**Custom Gold Jewelry Manufacturing Platform | Iran | Client Confidential**
 - **Built the frontend using React & Next.js**, ensuring a **responsive and seamless user experience**.  
 - **Designed and optimized the backend with NestJS & MongoDB**, enabling **efficient order processing, custom design management, and real-time tracking**.  
 - **Integrated a real-time chat feature**, allowing direct communication between customers and support teams for better engagement.  
