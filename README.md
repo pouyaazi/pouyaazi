@@ -154,8 +154,8 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 ---
 
 ### Skills  
-- **Backend**: Node.js (Express, Nestjs), Python (Django, FastApi)
-- **Frontend**: Jquery, Vuejs (Quasar)
+- **Backend**: Node.js (Express, NestJs), Python (Django, FastApi)
+- **Frontend**: Jquery, Vuejs (Quasar), React (Next.js)
 - **Databases**: MongoDB, MySQL, PostgreSQL, Redis, Elasticsearch
 - **Tools**: Git, Docker, FFMPEG, Minio
 - **Server**: Proxmox, VMware, Linux Ubuntu, AWS, Nginx, Php-fpm, BashScript, Gitlab CI/CD, Grafana, Prometheus
