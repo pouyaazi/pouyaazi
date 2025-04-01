@@ -4,7 +4,7 @@ azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azara
 ---
 
 ### Professional Summary  
-Experienced **Full-Stack Developer** with expertise in **backend development (Node.js, Python)** and **frontend frameworks (Vue.js, Quasar)**. Skilled in designing **scalable APIs**, integrating **third-party services**, and building **efficient, user-friendly web applications**. Passionate about **system optimization, DevOps, and cloud infrastructure**.  
+Experienced **Full-Stack Developer** with expertise in **backend development (Node.js, Python)** and **frontend frameworks (Vue.js, React)**. Skilled in designing **scalable APIs**, integrating **third-party services**, and building **efficient, user-friendly web applications**. Passionate about **system optimization, DevOps, and cloud infrastructure**.  
 
 ---
 
