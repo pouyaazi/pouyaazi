@@ -13,10 +13,13 @@ Experienced **Full-Stack Developer** with expertise in **backend development (No
 **Backend Developer**  
 Safirstores | Jun 2023 – Feb 2025  | [LINK](https://safirstores.com)
 - Developed the entire backend system from scratch, including architecture design, database implementation, and API development.  
-- Built and optimized a high-performance database from the ground up, ensuring scalability and efficiency.  
+- Built and **optimized** a high-performance database from the ground up, ensuring scalability and efficiency.  
 - **Increased website speed by 60%** by implementing Redis for caching and real-time data processing.  
-- Enhanced search accuracy and functionality by integrating Elasticsearch into the backend system.  
-- Collaborated with frontend developers and DevOps teams to ensure seamless integration and optimal system performance.  
+- Enhanced search accuracy and functionality by integrating **Elasticsearch** into the backend system.  
+- Collaborated with **frontend developers** and **DevOps teams** to ensure seamless integration and optimal system performance.
+- Implemented **PHP-FPM** for the SafirStores magazine section, optimizing the WordPress-based system for high availability and scalability.
+- Designed and deployed a **WordPress cluster**, enabling efficient load distribution and fault tolerance.
+- Achieved **5,000 requests** per second handling capacity by leveraging PHP-FPM optimizations and clustering techniques.
 
 **Backend Developer**  
 RedCoNet LLC | Feb 2023 – Jun 2023
@@ -158,7 +161,7 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - **Frontend**: Jquery, Vuejs (Quasar), React (Next.js)
 - **Databases**: MongoDB, MySQL, PostgreSQL, Redis, Elasticsearch
 - **Tools**: Git, Docker, FFMPEG, Minio
-- **Server**: Proxmox, VMware, Linux Ubuntu, AWS, Nginx, Php-fpm, BashScript, Gitlab CI/CD, Grafana, Prometheus
+- **Server**: Proxmox, VMware, Linux Ubuntu, AWS, Nginx, FPM, BashScript, Gitlab CI/CD, Grafana, Prometheus
 - **Methodologies**: Agile, Scrum, SOLID
 
 ---
