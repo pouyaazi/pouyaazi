@@ -13,7 +13,7 @@ Experienced **Full-Stack Developer** with expertise in **backend development (No
 **Backend Developer**  
 Safirstores | Jun 2023 – Feb 2025  | [LINK](https://safirstores.com)
 - Developed the entire backend system from scratch, including architecture design, database implementation, and API development.  
-- Built and **optimized** a high-performance database from the ground up, ensuring scalability and efficiency.  
+- Built and optimized a high-performance database from the ground up, ensuring scalability and efficiency.  
 - **Increased website speed by 60%** by implementing Redis for caching and real-time data processing.  
 - Enhanced search accuracy and functionality by integrating **Elasticsearch** into the backend system.  
 - Collaborated with **frontend developers** and **DevOps teams** to ensure seamless integration and optimal system performance.
