@@ -159,7 +159,7 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - **Databases**: MongoDB, MySQL, PostgreSQL, Redis, Elasticsearch
 - **Tools**: Git, Docker, FFMPEG, Minio
 - **Server**: Proxmox, VMware, Linux Ubuntu, Nginx, Php-fpm, BashScript, Gitlab CI/CD, Grafana, Prometheus
-- **Methodologies**: Agile, Scrum
+- **Methodologies**: Agile, Scrum, SOLID
 
 ---
 
