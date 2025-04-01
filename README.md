@@ -152,7 +152,14 @@ Talamameh | Sep 2016 – Nov 2021  | [LINK](https://talarnameh.com)
 - Developed a **web crawler** using **Python (Scrapy, BeautifulSoup, Selenium)** to extract competitor pricing and availability data.  
 - Implemented **multi-threaded crawling** for high-performance data collection.  
 - Designed a **MongoDB/MySQL** database schema for storing and analyzing scraped data.  
-- Automated data extraction with **scheduled tasks (Celery, Cron Jobs)** for real-time updates.  
+- Automated data extraction with **scheduled tasks (Celery, Cron Jobs)** for real-time updates.
+
+**ZargarChi – Custom Gold Jewelry Manufacturing Platform | Iran | Client Confidential**
+- **Built the frontend using React & Next.js**, ensuring a **responsive and seamless user experience**.  
+- **Designed and optimized the backend with NestJS & MongoDB**, enabling **efficient order processing, custom design management, and real-time tracking**.  
+- **Integrated a real-time chat feature**, allowing direct communication between customers and support teams for better engagement.  
+- **Implemented secure payment solutions** and **automated workflows** to streamline transactions and improve operational efficiency.  
+- **Optimized system performance** to handle high user traffic and ensure a **smooth experience**.  
 
 ---
 
