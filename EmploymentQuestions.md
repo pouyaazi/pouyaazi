@@ -1237,7 +1237,7 @@ export async function getServerSideProps(context) {
 ```
 
 
-# Docker Employment Questions & Answers
+# Docker
 
 ## 1. What is Docker?
 **Answer:**
@@ -1464,6 +1464,234 @@ ADD archive.tar.gz /app/
 ```
 
 
+# Nginx
+
+## 1. What is Nginx?
+**Answer:**
+Nginx is a high-performance web server, reverse proxy, and load balancer used to handle HTTP and other network protocols efficiently.
+
+---
+
+## 2. What are the key features of Nginx?
+**Answer:**
+- Reverse proxy with caching
+- Load balancing
+- FastCGI, SCGI, and uWSGI support
+- TLS/SSL termination
+- Static file serving
+- WebSockets support
+
+---
+
+## 3. What is the difference between Apache and Nginx?
+**Answer:**
+| Feature       | Apache            | Nginx               |
+|--------------|------------------|--------------------|
+| Process Model | Multi-threaded (mpm_prefork) | Event-driven, asynchronous |
+| Performance  | Slower for high concurrency | Handles many connections efficiently |
+| Configuration | .htaccess per directory | Single configuration file |
+| Static Content | Slower | Faster |
+
+---
+
+## 4. How do you install Nginx on Linux?
+**Answer:**
+```sh
+sudo apt update
+sudo apt install nginx -y
+```
+To start and enable:
+```sh
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+---
+
+## 5. How do you check the status of Nginx?
+**Answer:**
+```sh
+sudo systemctl status nginx
+```
+Or test the configuration:
+```sh
+nginx -t
+```
+
+---
+
+## 6. What is the default configuration file for Nginx?
+**Answer:**
+The default configuration file is located at:
+```sh
+/etc/nginx/nginx.conf
+```
+
+---
+
+## 7. How do you restart Nginx?
+**Answer:**
+```sh
+sudo systemctl restart nginx
+```
+
+---
+
+## 8. What is an Nginx reverse proxy?
+**Answer:**
+A reverse proxy forwards client requests to backend servers, providing load balancing, caching, and security features.
+
+Example configuration:
+```nginx
+server {
+    listen 80;
+    location / {
+        proxy_pass http://backend_server;
+        proxy_set_header Host $host;
+    }
+}
+```
+
+---
+
+## 9. How do you configure Nginx as a load balancer?
+**Answer:**
+Example configuration:
+```nginx
+upstream backend {
+    server server1.example.com;
+    server server2.example.com;
+}
+
+server {
+    listen 80;
+    location / {
+        proxy_pass http://backend;
+    }
+}
+```
+
+---
+
+## 10. How do you enable HTTPS in Nginx?
+**Answer:**
+Use SSL certificates with the following configuration:
+```nginx
+server {
+    listen 443 ssl;
+    server_name example.com;
+    ssl_certificate /etc/ssl/certs/example.crt;
+    ssl_certificate_key /etc/ssl/private/example.key;
+}
+```
+
+---
+
+## 11. How do you redirect HTTP to HTTPS in Nginx?
+**Answer:**
+```nginx
+server {
+    listen 80;
+    server_name example.com;
+    return 301 https://$host$request_uri;
+}
+```
+
+---
+
+## 12. How do you serve static files with Nginx?
+**Answer:**
+```nginx
+server {
+    listen 80;
+    root /var/www/html;
+    index index.html;
+}
+```
+
+---
+
+## 13. What is Nginx caching?
+**Answer:**
+Nginx caching stores static responses to improve performance. Example:
+```nginx
+location / {
+    proxy_cache my_cache;
+    proxy_pass http://backend;
+}
+```
+
+---
+
+## 14. How do you block an IP in Nginx?
+**Answer:**
+```nginx
+server {
+    deny 192.168.1.1;
+}
+```
+
+---
+
+## 15. How do you set up basic authentication in Nginx?
+**Answer:**
+```nginx
+location /secure {
+    auth_basic "Restricted";
+    auth_basic_user_file /etc/nginx/.htpasswd;
+}
+```
+Generate password file:
+```sh
+echo "user:$(openssl passwd -crypt password)" | sudo tee -a /etc/nginx/.htpasswd
+```
+
+---
+
+## 16. How do you enable gzip compression in Nginx?
+**Answer:**
+```nginx
+gzip on;
+gzip_types text/plain application/json;
+```
+
+---
+
+## 17. How do you monitor Nginx logs?
+**Answer:**
+```sh
+tail -f /var/log/nginx/access.log
+```
+
+---
+
+## 18. What is a 502 Bad Gateway error in Nginx?
+**Answer:**
+This occurs when the backend server is unreachable. Check:
+- Backend server status
+- `proxy_pass` configuration
+
+---
+
+## 19. How do you configure Nginx with PHP?
+**Answer:**
+```nginx
+server {
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        include fastcgi_params;
+    }
+}
+```
+
+---
+
+## 20. How do you optimize Nginx performance?
+**Answer:**
+- Enable caching
+- Use gzip compression
+- Optimize worker processes (`worker_processes auto;`)
+- Load balance traffic
 
 
 
