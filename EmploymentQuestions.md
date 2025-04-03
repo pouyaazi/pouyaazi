@@ -1237,6 +1237,231 @@ export async function getServerSideProps(context) {
 ```
 
 
+# Docker Employment Questions & Answers
+
+## 1. What is Docker?
+**Answer:**
+Docker is an open-source platform that enables developers to automate the deployment, scaling, and management of applications using containerization.
+
+---
+
+## 2. What is a Docker Container?
+**Answer:**
+A Docker container is a lightweight, standalone, executable package that includes everything needed to run an application: code, runtime, libraries, and dependencies.
+
+---
+
+## 3. What is a Docker Image?
+**Answer:**
+A Docker image is a read-only template used to create containers. It contains application code, libraries, dependencies, and configuration files.
+
+---
+
+## 4. What is the difference between a Docker Image and a Container?
+**Answer:**
+- **Image**: A template with the application and dependencies.
+- **Container**: A running instance of an image.
+
+---
+
+## 5. How do you create and run a Docker container?
+**Answer:**
+```sh
+docker build -t myapp .  # Build image
+docker run -d -p 8080:80 myapp  # Run container
+```
+
+---
+
+## 6. What is a Dockerfile?
+**Answer:**
+A Dockerfile is a script containing instructions to automate the creation of Docker images.
+
+Example:
+```dockerfile
+FROM node:16
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "server.js"]
+```
+
+---
+
+## 7. What is the difference between `CMD` and `ENTRYPOINT`?
+**Answer:**
+- **CMD**: Provides default commands that can be overridden.
+- **ENTRYPOINT**: Defines a fixed command that always runs.
+
+Example:
+```dockerfile
+ENTRYPOINT ["python", "app.py"]
+```
+
+---
+
+## 8. What is a Docker Volume?
+**Answer:**
+A Docker volume is used to persist data outside a container’s lifecycle.
+
+Example:
+```sh
+docker volume create mydata
+docker run -v mydata:/app/data myapp
+```
+
+---
+
+## 9. What are Docker Networks?
+**Answer:**
+Docker networking enables communication between containers.
+- **Bridge** (default)
+- **Host**
+- **None**
+- **Overlay**
+
+Example:
+```sh
+docker network create mynetwork
+docker network connect mynetwork mycontainer
+```
+
+---
+
+## 10. What is Docker Compose?
+**Answer:**
+Docker Compose is a tool for defining and running multi-container applications.
+
+Example `docker-compose.yml`:
+```yaml
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+```
+
+Start with:
+```sh
+docker-compose up -d
+```
+
+---
+
+## 11. What is the difference between Docker and Virtual Machines?
+**Answer:**
+- **VMs**: Require a full OS per instance.
+- **Docker**: Uses a shared OS kernel, making it more lightweight and efficient.
+
+---
+
+## 12. What is a Multi-Stage Build in Docker?
+**Answer:**
+A multi-stage build helps reduce image size by using intermediate containers.
+
+Example:
+```dockerfile
+FROM golang:alpine AS builder
+WORKDIR /app
+COPY . .
+RUN go build -o main .
+
+FROM alpine
+COPY --from=builder /app/main /app/main
+CMD ["/app/main"]
+```
+
+---
+
+## 13. What is Docker Swarm?
+**Answer:**
+Docker Swarm is Docker’s native clustering and orchestration tool for managing a cluster of Docker nodes.
+
+Example:
+```sh
+docker swarm init
+docker service create --replicas 3 -p 80:80 nginx
+```
+
+---
+
+## 14. How do you inspect a running Docker container?
+**Answer:**
+```sh
+docker ps  # List running containers
+docker inspect <container_id>  # Get detailed info
+docker logs <container_id>  # View logs
+docker exec -it <container_id> /bin/sh  # Access shell
+```
+
+---
+
+## 15. What is the difference between `docker stop`, `docker kill`, and `docker rm`?
+**Answer:**
+- **docker stop**: Gracefully stops a container.
+- **docker kill**: Forces a container to stop immediately.
+- **docker rm**: Removes a stopped container.
+
+Example:
+```sh
+docker stop mycontainer
+docker kill mycontainer
+docker rm mycontainer
+```
+
+---
+
+## 16. What are some security best practices for Docker?
+**Answer:**
+- Use minimal base images (e.g., `alpine` instead of `ubuntu`).
+- Avoid running containers as root.
+- Regularly scan images for vulnerabilities (`docker scan`).
+- Restrict container privileges using AppArmor or SELinux.
+
+---
+
+## 17. How do you clean up unused Docker resources?
+**Answer:**
+```sh
+docker system prune -a  # Remove unused images, containers, and networks
+docker volume prune  # Remove unused volumes
+```
+
+---
+
+## 18. What is Docker BuildKit?
+**Answer:**
+BuildKit improves the speed and security of Docker builds.
+
+Enable it with:
+```sh
+export DOCKER_BUILDKIT=1
+docker build .
+```
+
+---
+
+## 19. How do you push a Docker image to Docker Hub?
+**Answer:**
+```sh
+docker login -u myusername -p mypassword
+docker tag myapp myusername/myapp:v1
+docker push myusername/myapp:v1
+```
+
+---
+
+## 20. What is the difference between `ADD` and `COPY` in Dockerfile?
+**Answer:**
+- **COPY**: Copies files from the local system to the container.
+- **ADD**: Like `COPY`, but also allows remote URL fetching and file extraction.
+
+Example:
+```dockerfile
+COPY myfile.txt /app/
+ADD archive.tar.gz /app/
+```
 
 
 
