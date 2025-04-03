@@ -1694,6 +1694,300 @@ server {
 - Load balance traffic
 
 
+# Kubernetes
+
+## 1. What is Kubernetes?
+**Answer:**
+Kubernetes (K8s) is an open-source container orchestration platform for managing containerized applications across multiple hosts, providing automation, scaling, and management.
+
+---
+
+## 2. What are the main components of Kubernetes architecture?
+**Answer:**
+- **Master Node:** API Server, Controller Manager, Scheduler, etcd
+- **Worker Nodes:** Kubelet, Kube Proxy, Container Runtime (Docker, CRI-O)
+- **Pods:** Smallest deployable units in Kubernetes
+
+---
+
+## 3. What is a Pod in Kubernetes?
+**Answer:**
+A Pod is the smallest deployable unit in Kubernetes that contains one or more containers sharing networking and storage.
+
+---
+
+## 4. What is a ReplicaSet?
+**Answer:**
+A ReplicaSet ensures a specified number of pod replicas are running at all times.
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+```
+
+---
+
+## 5. What is a Deployment in Kubernetes?
+**Answer:**
+A Deployment manages ReplicaSets and provides rollout, rollback, and scaling of applications.
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+```
+
+---
+
+## 6. What is a Service in Kubernetes?
+**Answer:**
+A Service exposes a set of Pods as a network service.
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+```
+
+---
+
+## 7. What are the types of Kubernetes Services?
+**Answer:**
+- **ClusterIP:** Default, accessible within the cluster
+- **NodePort:** Exposes the service on a static port on each node
+- **LoadBalancer:** Provisions an external load balancer
+- **ExternalName:** Maps to an external domain
+
+---
+
+## 8. What is a ConfigMap in Kubernetes?
+**Answer:**
+A ConfigMap is used to store non-confidential configuration data.
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+  data:
+    database_url: "mongodb://db:27017"
+```
+
+---
+
+## 9. What is a Secret in Kubernetes?
+**Answer:**
+A Secret is used to store confidential information like passwords and API keys.
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+  type: Opaque
+  data:
+    password: cGFzc3dvcmQ=
+```
+
+---
+
+## 10. What is a Persistent Volume (PV)?
+**Answer:**
+A Persistent Volume provides long-term storage for Pods.
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+```
+
+---
+
+## 11. What is a Persistent Volume Claim (PVC)?
+**Answer:**
+A PVC requests storage from a Persistent Volume.
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+---
+
+## 12. How do you scale a Deployment in Kubernetes?
+**Answer:**
+Using `kubectl scale`:
+```sh
+kubectl scale deployment my-deployment --replicas=5
+```
+Or by updating the Deployment YAML.
+
+---
+
+## 13. What is a DaemonSet in Kubernetes?
+**Answer:**
+A DaemonSet ensures a Pod runs on every node in the cluster.
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-daemonset
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: busybox
+```
+
+---
+
+## 14. What is an Ingress in Kubernetes?
+**Answer:**
+An Ingress manages external access to services inside the cluster using HTTP/HTTPS.
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-service
+            port:
+              number: 80
+```
+
+---
+
+## 15. How do you check the logs of a running Pod?
+**Answer:**
+```sh
+kubectl logs my-pod
+```
+For a specific container in a pod:
+```sh
+kubectl logs my-pod -c my-container
+```
+
+---
+
+## 16. How do you troubleshoot a failing pod?
+**Answer:**
+- Check pod status: `kubectl get pods`
+- Describe the pod: `kubectl describe pod my-pod`
+- View logs: `kubectl logs my-pod`
+- Access container shell: `kubectl exec -it my-pod -- /bin/sh`
+
+---
+
+## 17. What is a Horizontal Pod Autoscaler (HPA)?
+**Answer:**
+HPA automatically scales the number of pods based on CPU/memory usage.
+```sh
+kubectl autoscale deployment my-deployment --cpu-percent=50 --min=2 --max=10
+```
+
+---
+
+## 18. What is a StatefulSet?
+**Answer:**
+StatefulSets are used for stateful applications where each pod has a unique identity.
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-statefulset
+spec:
+  serviceName: my-service
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+```
+
+---
+
+## 19. What is Helm in Kubernetes?
+**Answer:**
+Helm is a package manager for Kubernetes that simplifies application deployment using charts.
+
+---
+
+## 20. How do you delete a Kubernetes resource?
+**Answer:**
+```sh
+kubectl delete pod my-pod
+kubectl delete deployment my-deployment
+kubectl delete service my-service
+```
+
+
 
 
 
