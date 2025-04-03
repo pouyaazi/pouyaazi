@@ -106,7 +106,6 @@ npm (Node Package Manager) is the default package manager for Node.js. It is use
 **Answer:**  
 NestJS is a progressive Node.js framework for building efficient, scalable, and maintainable server-side applications. It is built on top of Express.js (or Fastify) and follows a modular architecture, leveraging TypeScript by default.
 
----
 
 ## 2. What are the core features of NestJS?
 
@@ -118,7 +117,6 @@ NestJS is a progressive Node.js framework for building efficient, scalable, and 
 - **Built-in Support for WebSockets and Microservices**.
 - **Powerful CLI**: Automates code generation and development tasks.
 
----
 
 ## 3. What is a module in NestJS?
 
@@ -138,7 +136,6 @@ import { UsersService } from './users.service';
 export class UsersModule {}
 ```
 
----
 
 ## 4. What is a controller in NestJS?
 
@@ -158,7 +155,6 @@ export class UsersController {
 }
 ```
 
----
 
 ## 5. What is a service in NestJS?
 
@@ -177,7 +173,6 @@ export class UsersService {
 }
 ```
 
----
 
 ## 6. What is Dependency Injection (DI) in NestJS?
 
@@ -209,7 +204,6 @@ export class UsersController {
 }
 ```
 
----
 
 ## 7. How does NestJS handle middleware?
 
@@ -241,7 +235,6 @@ export class AppModule implements NestModule {
 }
 ```
 
----
 
 ## 8. What are Pipes in NestJS?
 
@@ -272,7 +265,6 @@ findOne(@Param('id', new ParseIntPipe()) id: number) {
 }
 ```
 
----
 
 ## 9. What are Interceptors in NestJS?
 
@@ -298,7 +290,6 @@ Applying globally:
 app.useGlobalInterceptors(new TransformInterceptor());
 ```
 
----
 
 ## 10. What is the difference between Guards and Middleware in NestJS?
 
@@ -330,8 +321,6 @@ findAll() {
 }
 ```
 
----
-
 ## 11. What databases does NestJS support?
 
 **Answer:**
@@ -354,10 +343,6 @@ export class User {
   name: string;
 }
 ```
-
----
-
-This markdown file provides a structured guide to **NestJS interview questions and answers** for both beginners and experienced developers. 🚀
 
 
 
