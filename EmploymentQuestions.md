@@ -982,6 +982,260 @@ const EnhancedComponent = withLogger(MyComponent);
 ```
 
 
+# Next.js
+
+## 1. What is Next.js?
+
+**Answer:**
+Next.js is a React framework that enables **server-side rendering (SSR)**, **static site generation (SSG)**, and other performance optimizations for React applications.
+
+---
+
+## 2. What are the key features of Next.js?
+
+**Answer:**
+- **Hybrid Rendering** – Supports both **SSG** and **SSR**.
+- **API Routes** – Built-in backend functionality.
+- **Automatic Code Splitting** – Optimizes loading performance.
+- **Image Optimization** – Uses the `next/image` component.
+- **Incremental Static Regeneration (ISR)** – Updates static content without redeploying.
+- **Fast Refresh** – Improved development experience with hot reloading.
+- **Built-in CSS & Sass Support** – Supports global and module styles.
+
+---
+
+## 3. What is the difference between SSR and SSG in Next.js?
+
+**Answer:**
+| Feature | SSR (Server-Side Rendering) | SSG (Static Site Generation) |
+|---------|---------------------------|----------------------------|
+| When is HTML generated? | At request time (runtime) | At build time |
+| Performance | Slower due to real-time rendering | Faster as pre-rendered |
+| Use Case | Dynamic content (e.g., user dashboards) | Static content (e.g., blogs) |
+
+Example:
+```js
+// SSR Example
+export async function getServerSideProps() {
+  return { props: { time: new Date().toISOString() } };
+}
+```
+```js
+// SSG Example
+export async function getStaticProps() {
+  return { props: { data: await fetchData() } };
+}
+```
+
+---
+
+## 4. What is Incremental Static Regeneration (ISR)?
+
+**Answer:**
+ISR allows static pages to be **updated after deployment** without rebuilding the entire site.
+
+Example:
+```js
+export async function getStaticProps() {
+  return {
+    props: { data: await fetchData() },
+    revalidate: 10, // Regenerate page every 10 seconds
+  };
+}
+```
+
+---
+
+## 5. How do API routes work in Next.js?
+
+**Answer:**
+Next.js allows creating backend API endpoints inside the `pages/api` directory.
+
+Example:
+```js
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello from Next.js API' });
+}
+```
+
+---
+
+## 6. What is the difference between `getStaticProps`, `getServerSideProps`, and `getInitialProps`?
+
+**Answer:**
+| Function | When does it run? | Use Case |
+|----------|----------------|----------|
+| `getStaticProps` | At build time | Static content (e.g., blogs) |
+| `getServerSideProps` | On each request | Dynamic content (e.g., dashboards) |
+| `getInitialProps` | On both server & client | Deprecated, use `getServerSideProps` instead |
+
+---
+
+## 7. How does routing work in Next.js?
+
+**Answer:**
+Next.js uses a **file-based routing system**, where the file structure in `pages/` determines the routes.
+
+Example:
+```
+pages/
+  index.js -> '/'
+  about.js -> '/about'
+  blog/[id].js -> '/blog/:id'
+```
+
+Dynamic routes:
+```js
+// pages/blog/[id].js
+import { useRouter } from 'next/router';
+export default function BlogPost() {
+  const router = useRouter();
+  return <h1>Blog ID: {router.query.id}</h1>;
+}
+```
+
+---
+
+## 8. How does Next.js handle CSS?
+
+**Answer:**
+Next.js supports:
+- **Global CSS** (`styles/global.css`)
+- **CSS Modules** (`Component.module.css`)
+- **Sass/SCSS Support** (`styles/global.scss`)
+- **Styled Components** (via third-party libraries)
+
+Example:
+```css
+/* styles/Home.module.css */
+.title {
+  color: blue;
+}
+```
+```js
+import styles from './Home.module.css';
+export default function Home() {
+  return <h1 className={styles.title}>Hello Next.js</h1>;
+}
+```
+
+---
+
+## 9. How to handle redirects in Next.js?
+
+**Answer:**
+Redirects are configured in `next.config.js`.
+
+Example:
+```js
+module.exports = {
+  async redirects() {
+    return [{
+      source: '/old-page',
+      destination: '/new-page',
+      permanent: true,
+    }];
+  },
+};
+```
+
+---
+
+## 10. What are middleware functions in Next.js?
+
+**Answer:**
+Middleware functions in Next.js **intercept requests** before reaching API routes or pages.
+
+Example:
+```js
+// middleware.ts
+import { NextResponse } from 'next/server';
+export function middleware(req) {
+  if (!req.cookies.token) {
+    return NextResponse.redirect('/login');
+  }
+}
+```
+
+---
+
+## 11. How does Next.js optimize images?
+
+**Answer:**
+Next.js provides the `next/image` component for automatic image optimization.
+
+Example:
+```js
+import Image from 'next/image';
+<Image src="/image.jpg" width={500} height={300} alt="Optimized Image" />
+```
+
+---
+
+## 12. How do you deploy a Next.js app?
+
+**Answer:**
+- **Vercel** (recommended): `vercel deploy`
+- **Static Export**: `next build && next export`
+- **Custom Server**: Deploy using Node.js and Express.
+
+Example:
+```sh
+npm run build
+npm start
+```
+
+---
+
+## 13. How do you enable environment variables in Next.js?
+
+**Answer:**
+Create a `.env.local` file:
+```
+NEXT_PUBLIC_API_URL=https://api.example.com
+```
+Access it in your code:
+```js
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+```
+
+---
+
+## 14. What is the difference between `next/link` and `next/router`?
+
+**Answer:**
+- `next/link` – Used for client-side navigation.
+- `next/router` – Provides programmatic navigation.
+
+Example:
+```js
+import Link from 'next/link';
+<Link href="/about">Go to About</Link>;
+```
+```js
+import { useRouter } from 'next/router';
+const router = useRouter();
+router.push('/dashboard');
+```
+
+---
+
+## 15. How do you handle authentication in Next.js?
+
+**Answer:**
+- Use **NextAuth.js** for easy OAuth & JWT authentication.
+- Implement **JWT-based authentication** using API routes.
+
+Example:
+```js
+import { getSession } from 'next-auth/react';
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  if (!session) return { redirect: { destination: '/login', permanent: false } };
+  return { props: { user: session.user } };
+}
+```
+
 
 
 
