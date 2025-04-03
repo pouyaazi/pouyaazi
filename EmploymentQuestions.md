@@ -77,11 +77,25 @@ The cluster module in Node.js is used to spawn multiple child processes (workers
 - fs.readFile(): Reads the entire file into memory before returning the data. Suitable for small files.
 - fs.createReadStream(): Reads the file in chunks and streams it, allowing for handling large files without loading everything into memory.
 
+## 17. What is a promise in Node.js?
+A Promise is an object representing the eventual completion (or failure) of an asynchronous operation. It allows handling asynchronous code more elegantly compared to callbacks by chaining .then() for success and .catch() for error handling.
+
+## 18. What is npm in Node.js?
+npm (Node Package Manager) is the default package manager for Node.js. It is used to install, manage, and share packages (libraries or modules) within a Node.js application. It also helps in managing dependencies and scripts.
+
+## 19. How can you improve performance in a Node.js application?
 
 
+- Use async/await and Promises to avoid blocking operations.
+- Optimize I/O operations by using streams.
+- Use cluster to leverage multi-core processors.
+- Profile and debug with tools like Node.js Profiler and Chrome DevTools.
+- Minimize the use of global variables to reduce memory footprint.
 
+## 20. What is the purpose of npm install --save and npm install --save-dev?
 
-
+- **--save**: Adds the package to the dependencies section in package.json. This is for packages required in production.
+- **--save-dev**: Adds the package to the devDependencies section in package.json. This is for packages required only in the development environment (e.g., testing libraries).
 
 
 
