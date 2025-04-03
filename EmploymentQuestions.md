@@ -1,7 +1,175 @@
-# GIT
-- **Cherry-pick**: is a Git command that allows you to **select a specific commit** from one branch and apply it to another branch. This is useful when you want to pick certain changes without merging the entire branch.
-- **Git Merge**: Creates a new "merge commit" that combines the histories of both branches. Best for collaborative workflows where you want to keep the full history of branches.
-- **Git Rebase**: Moves (reapplies) commits from one branch to another, rewriting the commit history. No merge commits are created. Best for creating a clean, linear history, but use with caution on shared branches to avoid rewriting public history.
+# Git
+
+## 1. What is Git?
+
+**Answer:**
+Git is a distributed version control system (VCS) that allows multiple developers to collaborate on a project by tracking changes in the source code.
+
+---
+
+## 2. What are the key features of Git?
+
+**Answer:**
+- **Distributed Development** – Each developer has a full copy of the repository.
+- **Branching and Merging** – Enables easy creation and merging of branches.
+- **Version Control** – Keeps track of all changes and revisions.
+- **Lightweight and Fast** – Uses efficient algorithms for tracking changes.
+- **Staging Area** – Allows selective staging of changes before committing.
+
+---
+
+## 3. What is the difference between Git and GitHub?
+
+**Answer:**
+- **Git** is a version control system.
+- **GitHub** is a web-based platform for hosting and collaborating on Git repositories.
+
+Other alternatives to GitHub include GitLab and Bitbucket.
+
+---
+
+## 4. Explain the basic Git workflow.
+
+**Answer:**
+1. `git clone <repo-url>` – Clone a remote repository.
+2. `git checkout -b <branch-name>` – Create and switch to a new branch.
+3. `git add <file>` – Stage changes.
+4. `git commit -m "message"` – Commit changes.
+5. `git push origin <branch-name>` – Push changes to the remote repository.
+
+---
+
+## 5. What is the difference between `git pull` and `git fetch`?
+
+**Answer:**
+- `git pull` – Fetches changes from the remote repository and automatically merges them into the current branch.
+- `git fetch` – Only downloads changes without merging them.
+
+---
+
+## 6. What is a Git branch?
+
+**Answer:**
+A branch in Git is a separate line of development. It allows developers to work on features independently without affecting the main branch.
+
+Commands:
+```sh
+git branch <branch-name> # Create a new branch
+git checkout <branch-name> # Switch to a branch
+git merge <branch-name> # Merge a branch into the current branch
+git branch -d <branch-name> # Delete a branch
+```
+
+---
+
+## 7. What is the difference between `git merge` and `git rebase`?
+
+**Answer:**
+- **`git merge`** – Combines two branches by creating a merge commit.
+- **`git rebase`** – Reapplies commits from one branch onto another in a linear fashion.
+
+Example:
+```sh
+git checkout feature-branch
+git rebase main
+```
+
+---
+
+## 8. How do you resolve merge conflicts in Git?
+
+**Answer:**
+1. Run `git status` to see conflicted files.
+2. Open the conflicting files and manually resolve issues.
+3. Use `git add <file>` to mark conflicts as resolved.
+4. Commit the changes using `git commit`.
+
+---
+
+## 9. How do you undo changes in Git?
+
+**Answer:**
+- `git checkout -- <file>` – Discard uncommitted changes.
+- `git reset HEAD <file>` – Unstage a file.
+- `git reset --hard HEAD` – Reset to the last committed state.
+- `git revert <commit-hash>` – Create a new commit that undoes a previous commit.
+
+---
+
+## 10. What is the `.gitignore` file?
+
+**Answer:**
+A `.gitignore` file specifies files and directories that Git should ignore.
+
+Example:
+```
+node_modules/
+.env
+.DS_Store
+```
+
+---
+
+## 11. What is a Git tag?
+
+**Answer:**
+Tags are used to mark specific points in history, such as releases.
+
+Commands:
+```sh
+git tag v1.0.0 # Create a tag
+git tag # List tags
+git push origin v1.0.0 # Push a tag to remote repository
+```
+
+---
+
+## 12. What is Git stash?
+
+**Answer:**
+`git stash` temporarily saves changes that are not ready to be committed.
+
+Commands:
+```sh
+git stash # Stash changes
+git stash list # View stashed changes
+git stash pop # Apply stashed changes
+```
+
+---
+
+## 13. What is Git cherry-pick?
+
+**Answer:**
+`git cherry-pick <commit-hash>` applies a specific commit from one branch to another.
+
+Example:
+```sh
+git cherry-pick abc123
+```
+
+---
+
+## 14. What is the difference between `git reset` and `git revert`?
+
+**Answer:**
+- `git reset` – Moves the branch pointer and can remove commits.
+- `git revert` – Creates a new commit that undoes changes from a previous commit.
+
+Example:
+```sh
+git reset --hard HEAD~1 # Remove last commit
+git revert HEAD # Create a new commit undoing last commit
+```
+
+---
+
+## 15. How do you delete a remote branch?
+
+**Answer:**
+```sh
+git push origin --delete <branch-name>
+```
 
 
 # JavaScript
