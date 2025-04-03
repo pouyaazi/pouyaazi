@@ -4,6 +4,244 @@
 - **Git Rebase**: Moves (reapplies) commits from one branch to another, rewriting the commit history. No merge commits are created. Best for creating a clean, linear history, but use with caution on shared branches to avoid rewriting public history.
 
 
+# JavaScript
+
+## 1. What is JavaScript?
+
+**Answer:**
+JavaScript is a high-level, interpreted programming language used primarily for web development. It enables dynamic content, interactivity, and asynchronous operations in web pages.
+
+---
+
+## 2. What are the key features of JavaScript?
+
+**Answer:**
+- **Lightweight and Interpreted** – Runs in the browser without needing compilation.
+- **Dynamic Typing** – Variable types are determined at runtime.
+- **Prototype-Based Inheritance** – Objects inherit directly from other objects.
+- **Asynchronous and Event-Driven** – Supports non-blocking code execution.
+- **Functional Programming Support** – Functions are first-class citizens.
+
+---
+
+## 3. What are the different data types in JavaScript?
+
+**Answer:**
+JavaScript has **primitive** and **non-primitive (reference)** data types.
+
+### Primitive Types:
+- `String` – Represents text (e.g., `'Hello'`).
+- `Number` – Represents numbers (e.g., `42`, `3.14`).
+- `Boolean` – Represents `true` or `false`.
+- `Null` – Represents an empty or unknown value.
+- `Undefined` – A variable that has been declared but not assigned a value.
+- `Symbol` – A unique and immutable identifier (ES6+).
+- `BigInt` – Large integers (e.g., `123n`).
+
+### Non-Primitive Types:
+- `Object` – Collection of key-value pairs.
+- `Array` – Ordered list of values.
+- `Function` – Reusable block of code.
+
+---
+
+## 4. Explain `let`, `const`, and `var` in JavaScript.
+
+**Answer:**
+| Keyword | Scope | Hoisting | Reassignable | Mutable |
+|---------|------|---------|-------------|---------|
+| `var` | Function-scoped | Hoisted (initialized as `undefined`) | ✅ Yes | ✅ Yes |
+| `let` | Block-scoped | Hoisted (not initialized) | ✅ Yes | ✅ Yes |
+| `const` | Block-scoped | Hoisted (not initialized) | ❌ No | ✅ Yes (for objects & arrays) |
+
+Example:
+```js
+var a = 10; // Function-scoped
+let b = 20; // Block-scoped
+const c = 30; // Cannot be reassigned
+```
+
+---
+
+## 5. What is the difference between `==` and `===`?
+
+**Answer:**
+- `==` (Equality Operator) checks **value only**, allowing type coercion.
+- `===` (Strict Equality Operator) checks **both value and type**.
+
+Example:
+```js
+console.log(5 == '5');  // true (type coercion happens)
+console.log(5 === '5'); // false (different types)
+```
+
+---
+
+## 6. What are closures in JavaScript?
+
+**Answer:**
+A closure is a function that **remembers the variables from its outer scope**, even after the outer function has finished executing.
+
+Example:
+```js
+function outerFunction(x) {
+  return function innerFunction(y) {
+    return x + y;
+  };
+}
+
+const add5 = outerFunction(5);
+console.log(add5(3)); // 8
+```
+
+---
+
+## 7. What is the difference between `null` and `undefined`?
+
+**Answer:**
+- `null` – A variable explicitly set to "no value".
+- `undefined` – A variable that has been declared but not assigned a value.
+
+Example:
+```js
+let a;
+console.log(a); // undefined
+let b = null;
+console.log(b); // null
+```
+
+---
+
+## 8. What is an Immediately Invoked Function Expression (IIFE)?
+
+**Answer:**
+An IIFE is a function that runs immediately after it is defined.
+
+Example:
+```js
+(function() {
+  console.log('Executed immediately!');
+})();
+```
+
+---
+
+## 9. What is the event loop in JavaScript?
+
+**Answer:**
+The event loop is a mechanism that handles asynchronous operations in JavaScript, ensuring non-blocking execution.
+
+---
+
+## 10. Explain `call()`, `apply()`, and `bind()`.
+
+**Answer:**
+- `call()` – Calls a function with a specific `this` value and arguments passed individually.
+- `apply()` – Calls a function with a specific `this` value and arguments as an array.
+- `bind()` – Returns a new function with a bound `this` value.
+
+Example:
+```js
+const person = { name: 'John' };
+function greet(age) {
+  console.log(`Hello, my name is ${this.name} and I am ${age} years old.`);
+}
+
+greet.call(person, 30); // Call
+
+greet.apply(person, [30]); // Apply
+
+const boundGreet = greet.bind(person);
+boundGreet(30); // Bind
+```
+
+---
+
+## 11. What are promises in JavaScript?
+
+**Answer:**
+A promise is an object representing the **eventual completion or failure** of an asynchronous operation.
+
+Example:
+```js
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('Success!'), 1000);
+});
+
+myPromise.then(result => console.log(result));
+```
+
+---
+
+## 12. What is `async/await`?
+
+**Answer:**
+`async/await` simplifies handling promises in an asynchronous function.
+
+Example:
+```js
+async function fetchData() {
+  let response = await fetch('https://api.example.com/data');
+  let data = await response.json();
+  console.log(data);
+}
+fetchData();
+```
+
+---
+
+## 13. What are ES6 classes in JavaScript?
+
+**Answer:**
+ES6 introduced class syntax to create objects and handle inheritance more cleanly.
+
+Example:
+```js
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello, my name is ${this.name}`);
+  }
+}
+
+const person1 = new Person('Alice');
+person1.greet();
+```
+
+---
+
+## 14. What are the different types of JavaScript errors?
+
+**Answer:**
+- **SyntaxError** – Incorrect syntax (e.g., missing brackets).
+- **ReferenceError** – Accessing an undefined variable.
+- **TypeError** – Performing an invalid operation on a variable.
+- **RangeError** – Using an invalid range (e.g., `new Array(-1)`).
+
+Example:
+```js
+console.log(x); // ReferenceError: x is not defined
+```
+
+---
+
+## 15. What is the difference between `map()`, `filter()`, and `reduce()`?
+
+**Answer:**
+- `map()` – Transforms an array by applying a function to each element.
+- `filter()` – Returns an array of elements that meet a condition.
+- `reduce()` – Aggregates array values into a single value.
+
+Example:
+```js
+const numbers = [1, 2, 3, 4, 5];
+console.log(numbers.map(x => x * 2)); // [2, 4, 6, 8, 10]
+console.log(numbers.filter(x => x % 2 === 0)); // [2, 4]
+console.log(numbers.reduce((sum, x) => sum + x, 0)); // 15
+```
+
 # Nodejs
 ## 1. What is Node.js?
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It is designed to build scalable network applications and allows for running JavaScript on the server side. It is event-driven, non-blocking, and uses a single-threaded event loop to handle multiple requests.
