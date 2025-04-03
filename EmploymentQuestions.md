@@ -1987,6 +1987,182 @@ kubectl delete deployment my-deployment
 kubectl delete service my-service
 ```
 
+# MinIO
+
+## 1. What is MinIO?
+**Answer:**
+MinIO is a high-performance, open-source object storage system compatible with Amazon S3, designed for cloud-native environments, AI/ML workloads, and large-scale data storage.
+
+---
+
+## 2. How is MinIO different from AWS S3?
+**Answer:**
+- MinIO is self-hosted, whereas AWS S3 is a managed service.
+- MinIO provides better performance for on-premise and edge deployments.
+- MinIO is open-source and can be deployed on any infrastructure.
+
+---
+
+## 3. What are the key features of MinIO?
+**Answer:**
+- Amazon S3 API compatibility
+- High availability with distributed deployment
+- Erasure coding for data protection
+- Encryption at rest and in transit
+- Multi-tenancy support
+- Lambda compute functionality
+
+---
+
+## 4. How do you install MinIO?
+**Answer:**
+```sh
+wget https://dl.min.io/server/minio/release/linux-amd64/minio
+chmod +x minio
+sudo mv minio /usr/local/bin/
+```
+Or using Docker:
+```sh
+docker run -p 9000:9000 -p 9001:9001 --name minio \
+  -e "MINIO_ROOT_USER=admin" -e "MINIO_ROOT_PASSWORD=password" \
+  quay.io/minio/minio server /data --console-address ":9001"
+```
+
+---
+
+## 5. What is Erasure Coding in MinIO?
+**Answer:**
+Erasure coding is a data protection technique that splits data into multiple shards, adding parity information to recover lost data without full replication.
+
+---
+
+## 6. How do you create a bucket in MinIO?
+**Answer:**
+Using the MinIO Client (mc):
+```sh
+mc alias set myminio http://localhost:9000 admin password
+mc mb myminio/my-bucket
+```
+
+---
+
+## 7. How do you upload a file to MinIO?
+**Answer:**
+```sh
+mc alias set myminio http://localhost:9000 admin password
+mc cp myfile.txt myminio/my-bucket/
+```
+
+---
+
+## 8. How do you configure MinIO for high availability?
+**Answer:**
+MinIO can be deployed in distributed mode:
+```sh
+docker run -p 9000:9000 -p 9001:9001 --name minio \
+  -e "MINIO_ROOT_USER=admin" -e "MINIO_ROOT_PASSWORD=password" \
+  minio/minio server http://server{1...4}/data
+```
+This setup requires at least 4 nodes.
+
+---
+
+## 9. How do you enable MinIO encryption?
+**Answer:**
+MinIO supports SSE (Server-Side Encryption):
+```sh
+export MINIO_KMS_SECRET_KEY="my-secret-key"
+minio server /data
+```
+
+---
+
+## 10. How do you list all buckets in MinIO?
+**Answer:**
+```sh
+mc ls myminio
+```
+
+---
+
+## 11. How do you delete an object in MinIO?
+**Answer:**
+```sh
+mc rm myminio/my-bucket/myfile.txt
+```
+
+---
+
+## 12. How do you enable versioning in MinIO?
+**Answer:**
+```sh
+mc version enable myminio/my-bucket
+```
+
+---
+
+## 13. What is the MinIO Console?
+**Answer:**
+MinIO Console is a web-based UI for managing MinIO deployments, available at `http://localhost:9001`.
+
+---
+
+## 14. How do you set bucket policies in MinIO?
+**Answer:**
+```sh
+mc policy set public myminio/my-bucket
+```
+
+---
+
+## 15. How do you monitor MinIO?
+**Answer:**
+MinIO provides Prometheus-compatible metrics at `http://localhost:9000/minio/v2/metrics/cluster`.
+
+---
+
+## 16. How do you integrate MinIO with Kubernetes?
+**Answer:**
+Using MinIO Operator:
+```sh
+kubectl apply -k github.com/minio/operator/
+```
+
+---
+
+## 17. What is MinIO Gateway?
+**Answer:**
+MinIO Gateway allows using MinIO as a caching layer for external storage like AWS S3 or NAS.
+
+---
+
+## 18. How do you use MinIO with Terraform?
+**Answer:**
+```hcl
+provider "aws" {
+  access_key = "admin"
+  secret_key = "password"
+  endpoint   = "http://localhost:9000"
+  region     = "us-east-1"
+  s3_force_path_style = true
+}
+```
+
+---
+
+## 19. What authentication methods does MinIO support?
+**Answer:**
+- Access keys
+- JWT-based authentication
+- LDAP/Active Directory integration
+
+---
+
+## 20. How do you delete a bucket in MinIO?
+**Answer:**
+```sh
+mc rb --force myminio/my-bucket
+```
 
 
 
