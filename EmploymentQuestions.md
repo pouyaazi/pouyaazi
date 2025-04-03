@@ -344,6 +344,236 @@ export class User {
 }
 ```
 
+# React
+
+## 1. What is React?
+
+**Answer:**
+React is an open-source JavaScript library used for building user interfaces, especially single-page applications. It allows developers to create reusable UI components and efficiently update the UI using a virtual DOM.
+
+---
+
+## 2. What are the key features of React?
+
+**Answer:**
+- **JSX (JavaScript XML):** A syntax extension for JavaScript that allows writing HTML inside JS.
+- **Virtual DOM:** Improves performance by updating only changed parts of the actual DOM.
+- **Component-Based Architecture:** Applications are built using reusable components.
+- **One-Way Data Binding:** Ensures unidirectional data flow.
+- **Hooks:** Allow function components to use state and lifecycle methods.
+- **React Router:** Enables navigation without full page reloads.
+
+---
+
+## 3. What is JSX?
+
+**Answer:**
+JSX is a syntax extension for JavaScript that allows writing HTML-like code inside JavaScript.
+
+Example:
+```jsx
+const element = <h1>Hello, World!</h1>;
+```
+JSX is compiled into JavaScript using Babel before execution.
+
+---
+
+## 4. What is the Virtual DOM?
+
+**Answer:**
+The Virtual DOM is a lightweight representation of the real DOM. React updates the Virtual DOM first, compares it with the previous version (diffing), and then updates only the changed parts in the real DOM (reconciliation), improving performance.
+
+---
+
+## 5. What are components in React?
+
+**Answer:**
+Components are the building blocks of a React application. They can be **functional** or **class-based**.
+
+Example of a Functional Component:
+```jsx
+function Welcome() {
+  return <h1>Hello, React!</h1>;
+}
+```
+Example of a Class Component:
+```jsx
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, React!</h1>;
+  }
+}
+```
+
+---
+
+## 6. What is the difference between functional and class components?
+
+| Feature | Functional Component | Class Component |
+|---------|---------------------|----------------|
+| Syntax | Function-based | ES6 class-based |
+| State | Uses `useState` Hook | Uses `this.state` |
+| Lifecycle Methods | Uses `useEffect` Hook | Uses `componentDidMount`, `componentDidUpdate`, etc. |
+| Performance | More optimized | Less optimized |
+
+Example of a functional component with Hooks:
+```jsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+---
+
+## 7. What are props in React?
+
+**Answer:**
+Props (short for "properties") are used to pass data from parent to child components.
+
+Example:
+```jsx
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+<Greeting name="John" />
+```
+
+---
+
+## 8. What is state in React?
+
+**Answer:**
+State is an object that stores a component's dynamic data and determines its behavior.
+
+Example using `useState` Hook:
+```jsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+```
+
+---
+
+## 9. What are React Hooks?
+
+**Answer:**
+Hooks are functions that allow functional components to use state and lifecycle features.
+
+Common Hooks:
+- `useState` – Manages state in functional components.
+- `useEffect` – Performs side effects in function components.
+- `useContext` – Provides a way to pass data deeply without prop drilling.
+- `useRef` – Provides access to DOM elements or persistent values.
+- `useReducer` – An alternative to `useState` for complex state logic.
+
+Example using `useEffect`:
+```jsx
+import React, { useState, useEffect } from 'react';
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prevCount => prevCount + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return <p>Timer: {count} seconds</p>;
+}
+```
+
+---
+
+## 10. What is React Router?
+
+**Answer:**
+React Router is a library for handling navigation in React applications.
+
+Example:
+```jsx
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+      </nav>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+      </Switch>
+    </Router>
+  );
+}
+```
+
+---
+
+## 11. What is Redux?
+
+**Answer:**
+Redux is a state management library used for managing global state in large applications.
+
+Example setup:
+```jsx
+import { createStore } from 'redux';
+
+const initialState = { count: 0 };
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+
+const store = createStore(reducer);
+```
+
+---
+
+## 12. What are Higher-Order Components (HOC)?
+
+**Answer:**
+A Higher-Order Component (HOC) is a function that takes a component and returns a new component with additional functionality.
+
+Example:
+```jsx
+function withLogger(WrappedComponent) {
+  return function EnhancedComponent(props) {
+    console.log('Rendering', WrappedComponent.name);
+    return <WrappedComponent {...props} />;
+  };
+}
+```
+
+Usage:
+```jsx
+const EnhancedComponent = withLogger(MyComponent);
+```
 
 
 
