@@ -99,6 +99,265 @@ npm (Node Package Manager) is the default package manager for Node.js. It is use
 
 
 
+# Nestjs
+
+## 1. What is NestJS?
+
+**Answer:**  
+NestJS is a progressive Node.js framework for building efficient, scalable, and maintainable server-side applications. It is built on top of Express.js (or Fastify) and follows a modular architecture, leveraging TypeScript by default.
+
+---
+
+## 2. What are the core features of NestJS?
+
+**Answer:**
+- **Modular Architecture**: Applications are organized into modules.
+- **Dependency Injection (DI)**: Built-in support for DI using providers.
+- **Decorators & Metadata**: Uses TypeScript decorators to define components.
+- **Middleware Support**: Supports Express and Fastify middleware.
+- **Built-in Support for WebSockets and Microservices**.
+- **Powerful CLI**: Automates code generation and development tasks.
+
+---
+
+## 3. What is a module in NestJS?
+
+**Answer:**
+A **module** in NestJS is a class decorated with `@Module()` that organizes related components, services, and controllers together.
+
+Example:
+```typescript
+import { Module } from '@nestjs/common';
+import { UsersController } from './users.controller';
+import { UsersService } from './users.service';
+
+@Module({
+  controllers: [UsersController],
+  providers: [UsersService],
+})
+export class UsersModule {}
+```
+
+---
+
+## 4. What is a controller in NestJS?
+
+**Answer:**
+Controllers in NestJS handle incoming HTTP requests and define endpoints using decorators like `@Get()`, `@Post()`, etc.
+
+Example:
+```typescript
+import { Controller, Get } from '@nestjs/common';
+
+@Controller('users')
+export class UsersController {
+  @Get()
+  getAllUsers() {
+    return ['John', 'Jane', 'Doe'];
+  }
+}
+```
+
+---
+
+## 5. What is a service in NestJS?
+
+**Answer:**
+A **service** in NestJS is a provider that contains business logic and interacts with the database or external APIs. It is injected into controllers using Dependency Injection.
+
+Example:
+```typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class UsersService {
+  getUsers() {
+    return ['John', 'Jane', 'Doe'];
+  }
+}
+```
+
+---
+
+## 6. What is Dependency Injection (DI) in NestJS?
+
+**Answer:**
+DI is a design pattern where dependencies are injected instead of being created manually. NestJS uses DI to manage the lifecycle of services efficiently.
+
+Example:
+```typescript
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class UsersService {
+  getUsers() {
+    return ['John', 'Jane', 'Doe'];
+  }
+}
+```
+
+Injecting service into a controller:
+```typescript
+@Controller('users')
+export class UsersController {
+  constructor(private readonly usersService: UsersService) {}
+  
+  @Get()
+  getAllUsers() {
+    return this.usersService.getUsers();
+  }
+}
+```
+
+---
+
+## 7. How does NestJS handle middleware?
+
+**Answer:**
+Middleware in NestJS is a function that runs before a request reaches the controller. It is useful for logging, authentication, and request transformations.
+
+Example:
+```typescript
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Request, Response, NextFunction } from 'express';
+
+@Injectable()
+export class LoggerMiddleware implements NestMiddleware {
+  use(req: Request, res: Response, next: NextFunction) {
+    console.log(`Request... ${req.method} ${req.url}`);
+    next();
+  }
+}
+```
+
+Registering middleware in the module:
+```typescript
+import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+@Module({})
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
+```
+
+---
+
+## 8. What are Pipes in NestJS?
+
+**Answer:**
+Pipes are used for **data transformation** and **validation** in NestJS. They can be applied at the method level, controller level, or globally.
+
+Example using `ValidationPipe`:
+```typescript
+import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
+
+@Injectable()
+export class ParseIntPipe implements PipeTransform {
+  transform(value: any, metadata: ArgumentMetadata) {
+    const val = parseInt(value, 10);
+    if (isNaN(val)) {
+      throw new BadRequestException('Validation failed');
+    }
+    return val;
+  }
+}
+```
+
+Using in a controller:
+```typescript
+@Get(':id')
+findOne(@Param('id', new ParseIntPipe()) id: number) {
+  return `User with ID ${id}`;
+}
+```
+
+---
+
+## 9. What are Interceptors in NestJS?
+
+**Answer:**
+Interceptors in NestJS are used to modify request/response objects before they reach the controller or before they are sent to the client.
+
+Example:
+```typescript
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+@Injectable()
+export class TransformInterceptor implements NestInterceptor {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    return next.handle().pipe(map(data => ({ data })));
+  }
+}
+```
+
+Applying globally:
+```typescript
+app.useGlobalInterceptors(new TransformInterceptor());
+```
+
+---
+
+## 10. What is the difference between Guards and Middleware in NestJS?
+
+**Answer:**
+| Feature | Middleware | Guards |
+|---------|-----------|--------|
+| Execution Timing | Runs before controller | Runs before route execution |
+| Purpose | Modify requests (e.g., logging) | Handle authentication & authorization |
+| Scope | Applies globally or to specific routes | Specific to routes |
+
+Example of a **Guard**:
+```typescript
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+@Injectable()
+export class AuthGuard implements CanActivate {
+  canActivate(context: ExecutionContext): boolean {
+    const request = context.switchToHttp().getRequest();
+    return request.headers.authorization === 'valid-token';
+  }
+}
+```
+
+Applying to a route:
+```typescript
+@Get()
+@UseGuards(AuthGuard)
+findAll() {
+  return 'Protected Route';
+}
+```
+
+---
+
+## 11. What databases does NestJS support?
+
+**Answer:**
+NestJS supports multiple databases through ORMs such as:
+- TypeORM (SQL databases)
+- Sequelize (SQL databases)
+- Prisma (Modern ORM for SQL databases)
+- Mongoose (MongoDB)
+- MikroORM (NoSQL and SQL support)
+
+Example with TypeORM:
+```typescript
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+@Entity()
+export class User {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  name: string;
+}
+```
+
+---
+
+This markdown file provides a structured guide to **NestJS interview questions and answers** for both beginners and experienced developers. 🚀
 
 
 
