@@ -2166,6 +2166,752 @@ mc rb --force myminio/my-bucket
 
 
 
+# Design Patterns
+
+## 1. What are Design Patterns?
+**Answer:**
+Design patterns are reusable solutions to common software design problems. They provide a standardized approach to solving recurring issues in software development.
+
+---
+
+## 2. What are the main categories of Design Patterns?
+**Answer:**
+Design patterns are categorized into three main types:
+- **Creational Patterns**: Deal with object creation mechanisms (e.g., Singleton, Factory, Builder, Prototype, Abstract Factory).
+- **Structural Patterns**: Deal with object composition (e.g., Adapter, Bridge, Composite, Decorator, Facade, Proxy, Flyweight).
+- **Behavioral Patterns**: Focus on communication between objects (e.g., Observer, Strategy, Command, Chain of Responsibility, State, Template Method, Mediator, Memento, Visitor).
+
+---
+
+## 3. Explain the Singleton Pattern.
+**Answer:**
+The Singleton pattern ensures that a class has only one instance and provides a global point of access to it.
+
+**Example in JavaScript:**
+```js
+class Singleton {
+  constructor() {
+    if (!Singleton.instance) {
+      Singleton.instance = this;
+    }
+    return Singleton.instance;
+  }
+}
+const instance1 = new Singleton();
+const instance2 = new Singleton();
+console.log(instance1 === instance2); // true
+```
+
+---
+
+## 4. What is the Factory Method Pattern?
+**Answer:**
+The Factory Method pattern provides an interface for creating objects but allows subclasses to alter the type of objects that will be created.
+
+**Example:**
+```js
+class Factory {
+  static create(type) {
+    if (type === 'A') return new ProductA();
+    if (type === 'B') return new ProductB();
+  }
+}
+```
+
+---
+
+## 5. What is the Observer Pattern?
+**Answer:**
+The Observer pattern defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified automatically.
+
+**Example:**
+```js
+class Subject {
+  constructor() {
+    this.observers = [];
+  }
+  addObserver(observer) { this.observers.push(observer); }
+  notifyObservers() { this.observers.forEach(o => o.update()); }
+}
+class Observer {
+  update() { console.log('State updated!'); }
+}
+```
+
+---
+
+## 6. What is the Strategy Pattern?
+**Answer:**
+The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable.
+
+**Example:**
+```js
+class StrategyA {
+  execute() { console.log('Executing strategy A'); }
+}
+class StrategyB {
+  execute() { console.log('Executing strategy B'); }
+}
+class Context {
+  setStrategy(strategy) { this.strategy = strategy; }
+  executeStrategy() { this.strategy.execute(); }
+}
+```
+
+---
+
+## 7. What is the Decorator Pattern?
+**Answer:**
+The Decorator pattern dynamically adds responsibilities to objects without modifying their existing code.
+
+**Example:**
+```js
+class Coffee {
+  cost() { return 5; }
+}
+class MilkDecorator {
+  constructor(coffee) { this.coffee = coffee; }
+  cost() { return this.coffee.cost() + 2; }
+}
+```
+
+---
+
+## 8. What is the Adapter Pattern?
+**Answer:**
+The Adapter pattern allows incompatible interfaces to work together.
+
+**Example:**
+```js
+class OldSystem {
+  oldMethod() { return 'Old system method'; }
+}
+class Adapter {
+  constructor(oldSystem) { this.oldSystem = oldSystem; }
+  newMethod() { return this.oldSystem.oldMethod(); }
+}
+```
+
+---
+
+## 9. What is the Proxy Pattern?
+**Answer:**
+The Proxy pattern provides a surrogate or placeholder for another object to control access to it.
+
+**Example:**
+```js
+class RealSubject {
+  request() { console.log('Real request'); }
+}
+class Proxy {
+  constructor(realSubject) { this.realSubject = realSubject; }
+  request() { console.log('Proxy in action'); this.realSubject.request(); }
+}
+```
+
+---
+
+## 10. What is the Command Pattern?
+**Answer:**
+The Command pattern encapsulates a request as an object, allowing parameterization of clients with different requests.
+
+**Example:**
+```js
+class Command {
+  execute() {}
+}
+class LightOnCommand extends Command {
+  execute() { console.log('Light turned on'); }
+}
+```
+
+---
+
+## 11. What is the Template Method Pattern?
+**Answer:**
+The Template Method pattern defines the skeleton of an algorithm, deferring steps to subclasses.
+
+**Example:**
+```js
+class AbstractClass {
+  templateMethod() { this.step1(); this.step2(); }
+  step1() {}
+  step2() {}
+}
+class ConcreteClass extends AbstractClass {
+  step1() { console.log('Step 1 implemented'); }
+}
+```
+
+---
+
+## 12. What is the Facade Pattern?
+**Answer:**
+The Facade pattern provides a simplified interface to a complex subsystem.
+
+**Example:**
+```js
+class Subsystem {
+  operation() { console.log('Subsystem operation'); }
+}
+class Facade {
+  constructor() { this.subsystem = new Subsystem(); }
+  operation() { this.subsystem.operation(); }
+}
+```
+
+---
+
+## 13. What is the Chain of Responsibility Pattern?
+**Answer:**
+The Chain of Responsibility pattern passes a request along a chain of handlers.
+
+**Example:**
+```js
+class Handler {
+  setNext(handler) { this.nextHandler = handler; }
+  handle(request) { if (this.nextHandler) this.nextHandler.handle(request); }
+}
+```
+
+---
+
+## 14. What is the Flyweight Pattern?
+**Answer:**
+The Flyweight pattern minimizes memory usage by sharing as much data as possible between similar objects.
+
+**Example:**
+```js
+class Flyweight {
+  operation() { console.log('Flyweight operation'); }
+}
+class FlyweightFactory {
+  constructor() { this.flyweights = {}; }
+  getFlyweight(key) {
+    if (!this.flyweights[key]) {
+      this.flyweights[key] = new Flyweight();
+    }
+    return this.flyweights[key];
+  }
+}
+```
+
+---
+
+## 15. What is the State Pattern?
+**Answer:**
+The State pattern allows an object to alter its behavior when its internal state changes.
+
+**Example:**
+```js
+class State {
+  handle() {}
+}
+class ConcreteStateA extends State {
+  handle() { console.log('State A'); }
+}
+class Context {
+  setState(state) { this.state = state; }
+  request() { this.state.handle(); }
+}
+```
+
+
+
+
+
+
+
+# Python
+
+## 1. What are Python’s key features?
+**Answer:**
+- Easy to learn and read
+- Interpreted language
+- Dynamically typed
+- Supports multiple programming paradigms (OOP, functional, procedural)
+- Extensive standard library
+- Open-source and community-driven
+- Cross-platform compatibility
+
+---
+
+## 2. What is the difference between Python 2 and Python 3?
+**Answer:**
+- Python 3 has improved Unicode support.
+- Print statement is replaced with `print()` function.
+- Integer division returns a float by default.
+- Iterators behave differently (`range()` in Python 3 returns an iterator instead of a list).
+
+---
+
+## 3. What are Python’s built-in data types?
+**Answer:**
+- **Numeric types:** `int`, `float`, `complex`
+- **Sequence types:** `list`, `tuple`, `range`
+- **Set types:** `set`, `frozenset`
+- **Mapping types:** `dict`
+- **Boolean type:** `bool`
+- **Binary types:** `bytes`, `bytearray`, `memoryview`
+
+---
+
+## 4. What is the difference between a list and a tuple?
+**Answer:**
+- **List:** Mutable, can be modified, slower, defined using `[]`.
+- **Tuple:** Immutable, faster, defined using `()`.
+
+**Example:**
+```python
+my_list = [1, 2, 3]
+my_tuple = (1, 2, 3)
+```
+
+---
+
+## 5. What are Python’s mutable and immutable data types?
+**Answer:**
+- **Mutable:** `list`, `dict`, `set`, `bytearray`
+- **Immutable:** `int`, `float`, `bool`, `str`, `tuple`, `frozenset`
+
+---
+
+## 6. What is a lambda function?
+**Answer:**
+A lambda function is an anonymous function defined using the `lambda` keyword.
+
+**Example:**
+```python
+square = lambda x: x ** 2
+print(square(5))  # Output: 25
+```
+
+---
+
+## 7. What is the difference between `deepcopy()` and `copy()`?
+**Answer:**
+- **`copy.copy()`**: Creates a shallow copy (references nested objects instead of copying them).
+- **`copy.deepcopy()`**: Creates a deep copy (recursively copies all nested objects).
+
+---
+
+## 8. What is Python’s `self` keyword?
+**Answer:**
+The `self` keyword represents the instance of the class and is used to access class attributes and methods.
+
+**Example:**
+```python
+class Example:
+    def __init__(self, value):
+        self.value = value
+    def show(self):
+        print(self.value)
+```
+
+---
+
+## 9. What is Python’s `__init__` method?
+**Answer:**
+The `__init__` method is the constructor method in Python, executed when an object is created.
+
+**Example:**
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+```
+
+---
+
+## 10. What are Python’s magic methods?
+**Answer:**
+Magic methods (dunder methods) are special methods with double underscores, such as:
+- `__init__` (constructor)
+- `__str__` (string representation)
+- `__len__` (length)
+- `__getitem__` (indexing)
+- `__setattr__` (attribute setting)
+
+---
+
+## 11. What is the difference between `is` and `==` in Python?
+**Answer:**
+- `is`: Compares object identity (memory location).
+- `==`: Compares values.
+
+**Example:**
+```python
+x = [1, 2, 3]
+y = x
+z = [1, 2, 3]
+print(x is y)  # True
+print(x == z)  # True
+print(x is z)  # False
+```
+
+---
+
+## 12. What are Python’s decorators?
+**Answer:**
+Decorators are functions that modify the behavior of other functions.
+
+**Example:**
+```python
+def decorator(func):
+    def wrapper():
+        print("Before function execution")
+        func()
+        print("After function execution")
+    return wrapper
+
+@decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+```
+
+---
+
+## 13. How does Python manage memory?
+**Answer:**
+- Uses automatic garbage collection.
+- Reference counting and cyclic garbage collection.
+- Objects are stored in private heap space.
+
+---
+
+## 14. What is the difference between a generator and an iterator?
+**Answer:**
+- **Iterator**: An object that implements `__iter__()` and `__next__()` methods.
+- **Generator**: A function that yields values using `yield` and retains state.
+
+**Example of a generator:**
+```python
+def my_generator():
+    yield 1
+    yield 2
+    yield 3
+```
+
+---
+
+## 15. What is multithreading in Python? Does Python support true multithreading?
+**Answer:**
+- Python has a `threading` module for multithreading.
+- Due to the Global Interpreter Lock (GIL), Python does not support true parallel threads for CPU-bound tasks but works well for I/O-bound tasks.
+
+---
+
+## 16. What is a Python module and package?
+**Answer:**
+- **Module:** A `.py` file containing Python code.
+- **Package:** A directory containing multiple modules, with an `__init__.py` file.
+
+---
+
+## 17. How do you handle exceptions in Python?
+**Answer:**
+Using `try-except` blocks.
+
+**Example:**
+```python
+try:
+    x = 1 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+```
+
+---
+
+## 18. What is the difference between `@staticmethod`, `@classmethod`, and instance methods?
+**Answer:**
+- **Instance method:** Works on instance data (default method).
+- **Class method (`@classmethod`)**: Works with class attributes, takes `cls` as a parameter.
+- **Static method (`@staticmethod`)**: Does not depend on instance or class attributes.
+
+---
+
+## 19. What is the difference between `del`, `remove()`, and `pop()`?
+**Answer:**
+- `del`: Deletes a variable or index.
+- `remove()`: Removes an element by value.
+- `pop()`: Removes an element by index and returns it.
+
+---
+
+## 20. What is a virtual environment in Python?
+**Answer:**
+A virtual environment is an isolated Python environment where dependencies are managed separately for different projects.
+
+**Example:**
+```sh
+python -m venv myenv
+source myenv/bin/activate  # (Linux/macOS)
+myenv\Scripts\activate  # (Windows)
+```
+
+
+
+# FastAPI
+
+## 1. What is FastAPI?
+**Answer:**
+FastAPI is a modern, high-performance web framework for building APIs with Python 3. It is based on Starlette and Pydantic and is known for its speed, automatic interactive documentation, and ease of use.
+
+---
+
+## 2. What are the key features of FastAPI?
+**Answer:**
+- Asynchronous support with `async` and `await`.
+- Automatic generation of OpenAPI and Swagger documentation.
+- Data validation using Pydantic.
+- Dependency injection system.
+- High performance, similar to Node.js and Go.
+- Type hints for request parameters.
+
+---
+
+## 3. How do you install FastAPI and run a server?
+**Answer:**
+```sh
+pip install fastapi uvicorn
+```
+Then, create a simple FastAPI app:
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def read_root():
+    return {"message": "Hello, FastAPI!"}
+```
+Run it using Uvicorn:
+```sh
+uvicorn main:app --reload
+```
+
+---
+
+## 4. What is Uvicorn, and why is it used with FastAPI?
+**Answer:**
+Uvicorn is an ASGI (Asynchronous Server Gateway Interface) server that runs FastAPI applications. It is used because it provides high-performance, asynchronous capabilities required for FastAPI apps.
+
+---
+
+## 5. How do you define query parameters in FastAPI?
+**Answer:**
+```python
+@app.get("/items/")
+def read_item(name: str, quantity: int = 1):
+    return {"name": name, "quantity": quantity}
+```
+
+**Example request:** `GET /items/?name=apple&quantity=5`
+
+---
+
+## 6. How do you define path parameters in FastAPI?
+**Answer:**
+```python
+@app.get("/items/{item_id}")
+def read_item(item_id: int):
+    return {"item_id": item_id}
+```
+**Example request:** `GET /items/10`
+
+---
+
+## 7. How does FastAPI handle request body parsing?
+**Answer:**
+FastAPI uses Pydantic models for request body validation.
+```python
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    name: str
+    price: float
+    in_stock: bool
+
+@app.post("/items/")
+def create_item(item: Item):
+    return {"message": "Item created", "item": item}
+```
+---
+
+## 8. How do you add middleware in FastAPI?
+**Answer:**
+```python
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+---
+
+## 9. How do you handle dependencies in FastAPI?
+**Answer:**
+```python
+from fastapi import Depends
+
+def common_parameters(q: str = None):
+    return {"q": q}
+
+@app.get("/search/")
+def search(params: dict = Depends(common_parameters)):
+    return params
+```
+
+---
+
+## 10. How does FastAPI support authentication and authorization?
+**Answer:**
+FastAPI supports OAuth2, JWT, and API keys for authentication. Example using OAuth2:
+```python
+from fastapi.security import OAuth2PasswordBearer
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+@app.get("/users/me")
+def read_users_me(token: str = Depends(oauth2_scheme)):
+    return {"token": token}
+```
+
+---
+
+## 11. How do you use background tasks in FastAPI?
+**Answer:**
+```python
+from fastapi import BackgroundTasks
+
+def send_email(email: str):
+    print(f"Sending email to {email}")
+
+@app.post("/send-email/")
+def request_email(email: str, background_tasks: BackgroundTasks):
+    background_tasks.add_task(send_email, email)
+    return {"message": "Email will be sent in the background"}
+```
+
+---
+
+## 12. How do you add API documentation in FastAPI?
+**Answer:**
+FastAPI automatically generates OpenAPI documentation, accessible at:
+- **Swagger UI:** `http://127.0.0.1:8000/docs`
+- **ReDoc UI:** `http://127.0.0.1:8000/redoc`
+
+---
+
+## 13. What are some real-world use cases of FastAPI?
+**Answer:**
+- Building RESTful APIs.
+- Microservices.
+- AI and ML model deployment.
+- WebSockets and real-time applications.
+
+---
+
+## 14. What is the difference between FastAPI and Flask?
+**Answer:**
+| Feature      | FastAPI | Flask |
+|-------------|--------|-------|
+| Performance | Fast   | Slower |
+| Async Support | Yes | No (by default) |
+| Type Hints | Yes | No |
+| Documentation | Auto-generated | Manual |
+
+---
+
+## 15. How do you handle file uploads in FastAPI?
+**Answer:**
+```python
+from fastapi import File, UploadFile
+
+@app.post("/upload/")
+def upload_file(file: UploadFile = File(...)):
+    return {"filename": file.filename}
+```
+
+---
+
+## 16. How do you connect FastAPI with databases?
+**Answer:**
+Using SQLAlchemy:
+```python
+from sqlalchemy import create_engine
+DATABASE_URL = "sqlite:///./test.db"
+engine = create_engine(DATABASE_URL)
+```
+FastAPI also supports async ORMs like Tortoise-ORM.
+
+---
+
+## 17. How do you structure a FastAPI project?
+**Answer:**
+A common structure:
+```
+project/
+│── main.py
+│── models.py
+│── schemas.py
+│── routes/
+│   ├── users.py
+│   ├── items.py
+│── database.py
+│── config.py
+```
+
+---
+
+## 18. How does FastAPI handle response models?
+**Answer:**
+```python
+from pydantic import BaseModel
+
+class ItemResponse(BaseModel):
+    name: str
+    price: float
+
+@app.get("/items/{item_id}", response_model=ItemResponse)
+def get_item(item_id: int):
+    return {"name": "Laptop", "price": 1200.00}
+```
+
+---
+
+## 19. How do you add logging in FastAPI?
+**Answer:**
+```python
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.info("Application started")
+```
+
+---
+
+## 20. How do you deploy a FastAPI app?
+**Answer:**
+- Using **Uvicorn**:
+  ```sh
+  uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
+  ```
+- Using **Docker**:
+  ```dockerfile
+  FROM python:3.9
+  WORKDIR /app
+  COPY . .
+  RUN pip install fastapi uvicorn
+  CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+  ```
 
 
 
