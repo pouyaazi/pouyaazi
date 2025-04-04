@@ -6292,3 +6292,231 @@ Copy the public key to the server:
 ssh-copy-id username@hostname
 ```
 
+# Testing Code
+
+### **1. What is Software Testing?**
+**Answer:**  
+Software testing is the process of evaluating a software application or system to identify defects, bugs, or issues before it is released to end users. The goal is to ensure that the software meets requirements, performs as expected, and delivers a high-quality user experience.
+
+---
+
+### **2. What are the different types of testing?**
+**Answer:**  
+- **Manual Testing:** Performed by humans without automation tools.
+- **Automation Testing:** Uses scripts and tools to execute tests automatically.
+- **Functional Testing:** Verifies that the software behaves as per functional requirements.
+- **Non-Functional Testing:** Tests performance, security, usability, etc.
+- **Unit Testing:** Tests individual components or functions.
+- **Integration Testing:** Ensures modules work together correctly.
+- **System Testing:** Tests the complete system as a whole.
+- **Regression Testing:** Ensures new changes do not break existing functionality.
+
+---
+
+### **3. What is the difference between Verification and Validation?**
+**Answer:**  
+| **Aspect**        | **Verification**                                | **Validation**                              |
+|--------------------|--------------------------------------------------|---------------------------------------------|
+| **Focus**         | Are we building the product right?               | Are we building the right product?          |
+| **Method**        | Reviews, inspections, walkthroughs               | Testing, execution                          |
+| **Stage**         | During development                               | After development                           |
+
+---
+
+### **4. What is a Test Case?**
+**Answer:**  
+A test case is a set of conditions or steps designed to verify a specific feature or functionality of the software. It includes:
+- **Test ID**
+- **Test Steps**
+- **Expected Result**
+- **Actual Result**
+- **Pass/Fail Status**
+
+---
+
+### **5. What is the difference between Smoke Testing and Sanity Testing?**
+**Answer:**  
+| **Aspect**        | **Smoke Testing**                               | **Sanity Testing**                          |
+|--------------------|--------------------------------------------------|---------------------------------------------|
+| **Purpose**       | Checks critical functionalities to determine if the build is stable. | Focuses on verifying specific functionalities after minor changes. |
+| **Scope**         | Broad, covering major functionalities.           | Narrow, focusing on specific areas.         |
+| **When Used**     | Performed on initial builds.                     | Performed on stable builds after fixes.     |
+
+---
+
+## **Intermediate Questions**
+
+### **6. What is Test Automation? Why is it important?**
+**Answer:**  
+Test automation involves using tools and scripts to execute tests automatically, compare actual results with expected results, and generate reports. It is important because:
+- Reduces repetitive manual testing.
+- Increases test coverage and accuracy.
+- Enables faster feedback in CI/CD pipelines.
+- Saves time and effort for regression testing.
+
+---
+
+### **7. What are the key components of a Test Automation Framework?**
+**Answer:**  
+- **Test Scripts:** Automated tests written in code.
+- **Test Data:** Input data used for testing.
+- **Configuration Files:** Store environment-specific settings.
+- **Reporting Tools:** Generate test execution reports.
+- **CI/CD Integration:** Automates test execution in pipelines.
+- **Assertions:** Validate expected outcomes.
+
+---
+
+### **8. What is Selenium? How does it work?**
+**Answer:**  
+Selenium is an open-source tool for automating web browsers. It supports multiple programming languages (e.g., Java, Python) and browsers (e.g., Chrome, Firefox). Selenium works by:
+- Interacting with browser elements (e.g., clicking buttons, entering text).
+- Simulating user actions to validate functionality.
+
+Key components:
+- **Selenium WebDriver:** Automates browser interactions.
+- **Selenium IDE:** A record-and-playback tool.
+- **Selenium Grid:** Executes tests across multiple browsers and machines.
+
+---
+
+### **9. What is the difference between `assert` and `verify` in Selenium?**
+**Answer:**  
+| **Aspect**        | **Assert**                                      | **Verify**                                  |
+|--------------------|--------------------------------------------------|---------------------------------------------|
+| **Behavior**      | Stops test execution if the condition fails.     | Continues test execution even if the condition fails. |
+| **Use Case**      | Critical validations where failure means aborting the test. | Non-critical validations where failure does not stop the test. |
+
+---
+
+### **10. What is a Test Plan? What does it include?**
+**Answer:**  
+A test plan is a document that outlines the strategy for testing a software application. It includes:
+- **Scope and Objectives**
+- **Test Environment**
+- **Test Deliverables**
+- **Roles and Responsibilities**
+- **Risk Analysis**
+- **Test Schedule**
+
+---
+
+## **Advanced Questions**
+
+### **11. What is Continuous Testing in DevOps?**
+**Answer:**  
+Continuous Testing is the practice of executing automated tests as part of the CI/CD pipeline to provide immediate feedback on code changes. It ensures:
+- Early detection of defects.
+- Faster feedback loops.
+- Seamless integration with development processes.
+
+Tools: Jenkins, Selenium, JUnit, TestNG.
+
+---
+
+### **12. What is API Testing? How is it performed?**
+**Answer:**  
+API testing involves validating the functionality, reliability, and performance of APIs. It is performed using tools like Postman, REST Assured, or SoapUI. Steps:
+1. Send requests to the API endpoint.
+2. Validate the response status code, headers, and body.
+3. Check for error handling and edge cases.
+
+Example:
+```python
+import requests
+
+response = requests.get("https://api.example.com/data")
+assert response.status_code == 200
+assert "key" in response.json()
+```
+
+---
+
+### **13. What is Mocking in Testing?**
+**Answer:**  
+Mocking is the process of simulating the behavior of dependencies (e.g., databases, APIs) to isolate the component being tested. It is useful when:
+- Dependencies are unavailable or unreliable.
+- You want to test specific scenarios without external interference.
+
+Tools: Mockito (Java), unittest.mock (Python).
+
+---
+
+### **14. What is Test Coverage? Why is it important?**
+**Answer:**  
+Test coverage measures the percentage of code covered by automated tests. It is important because:
+- Identifies untested parts of the codebase.
+- Helps improve code quality and reduce bugs.
+- Provides metrics for test effectiveness.
+
+Tools: JaCoCo (Java), Coverage.py (Python).
+
+---
+
+### **15. What are the challenges in Test Automation?**
+**Answer:**  
+- **Maintenance:** Updating tests when the application changes.
+- **Flaky Tests:** Tests that fail intermittently due to timing or environmental issues.
+- **Tool Limitations:** Some tools may not support all browsers or platforms.
+- **Initial Setup Time:** Writing and configuring automation frameworks can be time-consuming.
+
+---
+
+## **Testing Tools Questions**
+
+### **16. What is JUnit?**
+**Answer:**  
+JUnit is a popular testing framework for Java. It provides annotations and assertions to write and execute unit tests. Example:
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ExampleTest {
+    @Test
+    void testAddition() {
+        assertEquals(4, 2 + 2);
+    }
+}
+```
+
+---
+
+### **17. What is TestNG? How is it different from JUnit?**
+**Answer:**  
+TestNG is another testing framework for Java, inspired by JUnit but with additional features:
+- Supports parallel test execution.
+- Provides better annotations (e.g., `@BeforeSuite`, `@AfterSuite`).
+- Includes built-in reporting.
+
+Difference:
+| **Feature**        | **JUnit**                                     | **TestNG**                                 |
+|--------------------|-----------------------------------------------|--------------------------------------------|
+| **Annotations**    | Limited scope                                | More flexible and powerful                 |
+| **Parallelism**    | Limited                                      | Built-in support for parallel execution    |
+
+---
+
+### **18. What is Cucumber?**
+**Answer:**  
+Cucumber is a tool for Behavior-Driven Development (BDD). It allows writing tests in plain English using the Gherkin syntax. Example:
+```gherkin
+Feature: Login Functionality
+  Scenario: Successful login
+    Given I am on the login page
+    When I enter valid credentials
+    Then I should see the dashboard
+```
+
+---
+
+### **19. What is Load Testing?**
+**Answer:**  
+Load testing evaluates how a system performs under expected user loads. It helps identify bottlenecks and ensures scalability. Tools: JMeter, Gatling.
+
+---
+
+### **20. What is Exploratory Testing?**
+**Answer:**  
+Exploratory testing is an unscripted approach where testers explore the application dynamically to find defects. It is useful for uncovering unexpected issues and requires creativity and domain knowledge.
+
+---
