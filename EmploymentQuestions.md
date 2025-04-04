@@ -1461,6 +1461,287 @@ Usage:
 const EnhancedComponent = withLogger(MyComponent);
 ```
 
+# Zustand
+
+Zustand is a lightweight, simple, and efficient state management library for React applications. It provides a straightforward API for managing global state without the boilerplate typically associated with other state management solutions like Redux.
+
+This document covers key concepts, usage patterns, and frequently asked questions about Zustand.
+
+### **1. What is Zustand?**
+**Answer:**  
+Zustand is a small, fast, and scalable state management library for React. It allows you to manage global state in a functional and declarative way. Zustand is designed to be minimalistic, avoiding the complexity of traditional state management libraries.
+
+Key features:
+- Simple API with hooks-based usage.
+- No boilerplate or middleware required.
+- Lightweight and highly performant.
+- Works seamlessly with React's functional components.
+
+---
+
+### **2. How do you install Zustand?**
+**Answer:**  
+You can install Zustand using npm or yarn:
+
+```bash
+npm install zustand
+```
+
+or
+
+```bash
+yarn add zustand
+```
+
+---
+
+### **3. How do you create a store in Zustand?**
+**Answer:**  
+A store in Zustand is created using the `create` function. The store holds the state and provides methods to update it.
+
+Example:
+```javascript
+import create from 'zustand';
+
+const useStore = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+}));
+
+export default useStore;
+```
+
+---
+
+### **4. How do you use a Zustand store in a React component?**
+**Answer:**  
+You can use the `useStore` hook to access and update the state in your React components.
+
+Example:
+```javascript
+import React from 'react';
+import useStore from './store';
+
+const Counter = () => {
+  const { count, increment, decrement } = useStore();
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+---
+
+### **5. What is the purpose of the `set` function in Zustand?**
+**Answer:**  
+The `set` function is used to update the state in a Zustand store. It accepts either an object or a function that computes the new state based on the current state.
+
+Example:
+```javascript
+set({ count: 10 }); // Directly update the state
+set((state) => ({ count: state.count + 1 })); // Update based on current state
+```
+
+---
+
+## **Intermediate Questions**
+
+### **6. How do you handle derived state in Zustand?**
+**Answer:**  
+Derived state can be computed using selectors when accessing the state. Zustand allows you to extract specific parts of the state using functions.
+
+Example:
+```javascript
+const useStore = create((set) => ({
+  todos: [],
+  addTodo: (text) => set((state) => ({ todos: [...state.todos, { text }] })),
+}));
+
+// Derived state: Get the number of completed todos
+const completedTodosCount = (state) => state.todos.filter((todo) => todo.completed).length;
+
+const TodoList = () => {
+  const todos = useStore((state) => state.todos);
+  const completedCount = useStore(completedTodosCount);
+
+  return (
+    <div>
+      <p>Completed Todos: {completedCount}</p>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>{todo.text}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+```
+
+---
+
+### **7. How do you handle asynchronous actions in Zustand?**
+**Answer:**  
+Asynchronous actions can be handled by defining async functions inside the store.
+
+Example:
+```javascript
+const useStore = create((set) => ({
+  data: null,
+  loading: false,
+  error: null,
+  fetchData: async (url) => {
+    set({ loading: true, error: null });
+    try {
+      const response = await fetch(url);
+      const result = await response.json();
+      set({ data: result, loading: false });
+    } catch (err) {
+      set({ error: err.message, loading: false });
+    }
+  },
+}));
+
+const DataComponent = () => {
+  const { data, loading, error, fetchData } = useStore();
+
+  React.useEffect(() => {
+    fetchData('https://api.example.com/data');
+  }, [fetchData]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return <pre>{JSON.stringify(data, null, 2)}</pre>;
+};
+```
+
+---
+
+### **8. How do you persist state in Zustand?**
+**Answer:**  
+You can use middleware like `zustand/middleware` to persist state in local storage or session storage.
+
+Example:
+```javascript
+import create from 'zustand';
+import { persist } from 'zustand/middleware';
+
+const useStore = create(
+  persist(
+    (set) => ({
+      count: 0,
+      increment: () => set((state) => ({ count: state.count + 1 })),
+      decrement: () => set((state) => ({ count: state.count - 1 })),
+    }),
+    {
+      name: 'counter-storage', // Unique key for storage
+    }
+  )
+);
+
+export default useStore;
+```
+
+---
+
+## **Advanced Questions**
+
+### **9. What are Zustand middlewares?**
+**Answer:**  
+Middlewares in Zustand allow you to extend the functionality of your store. Common middlewares include `persist`, `devtools`, and custom logging.
+
+Example with `devtools`:
+```javascript
+import create from 'zustand';
+import { devtools } from 'zustand/middleware';
+
+const useStore = create(
+  devtools((set) => ({
+    count: 0,
+    increment: () => set((state) => ({ count: state.count + 1 })),
+    decrement: () => set((state) => ({ count: state.count - 1 })),
+  }))
+);
+
+export default useStore;
+```
+
+---
+
+### **10. How do you split Zustand stores into multiple slices?**
+**Answer:**  
+You can split Zustand stores into modular slices using the `combine` utility or by merging multiple stores.
+
+Example:
+```javascript
+import create from 'zustand';
+
+// Slice 1: User state
+const createUserSlice = (set) => ({
+  user: null,
+  login: (userData) => set({ user: userData }),
+  logout: () => set({ user: null }),
+});
+
+// Slice 2: Theme state
+const createThemeSlice = (set) => ({
+  theme: 'light',
+  toggleTheme: () => set((state) => ({ theme: state.theme === 'light' ? 'dark' : 'light' })),
+});
+
+// Combine slices into one store
+const useStore = create((set) => ({
+  ...createUserSlice(set),
+  ...createThemeSlice(set),
+}));
+
+export default useStore;
+```
+
+---
+
+### **11. How does Zustand compare to Redux?**
+**Answer:**  
+| **Feature**         | **Zustand**                              | **Redux**                             |
+|----------------------|------------------------------------------|---------------------------------------|
+| **Boilerplate**      | Minimal                                  | High                                  |
+| **Middleware**       | Optional                                 | Required for async actions            |
+| **Learning Curve**   | Easy                                     | Steeper                               |
+| **Performance**      | Optimized for React                     | Requires manual optimization          |
+| **Use Case**         | Small to medium apps                    | Large-scale apps                      |
+
+---
+
+### **12. Can Zustand work with TypeScript?**
+**Answer:**  
+Yes, Zustand has excellent TypeScript support. You can define types for your state and actions.
+
+Example:
+```typescript
+import create from 'zustand';
+
+interface StoreState {
+  count: number;
+  increment: () => void;
+  decrement: () => void;
+}
+
+const useStore = create<StoreState>((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+}));
+
+export default useStore;
+```
 
 
 # Tailwind CSS - Employment Questions & Answers
