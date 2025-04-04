@@ -6025,3 +6025,270 @@ Work ethic refers to the values and attitudes that influence how a person approa
 - Maintain a positive attitude and stay motivated.
 - Continuously seek ways to improve your skills and performance.
 
+
+# Linux
+
+
+### **1. What is Linux?**
+**Answer:**  
+Linux is an open-source, Unix-like operating system kernel that serves as the foundation for various distributions (distros) like Ubuntu, CentOS, and Debian. It is widely used in servers, desktops, and embedded systems due to its stability, security, and flexibility.
+
+---
+
+### **2. What is the difference between Linux and Unix?**
+**Answer:**  
+| **Feature**         | **Linux**                            | **Unix**                             |
+|----------------------|---------------------------------------|---------------------------------------|
+| **Origin**          | Created by Linus Torvalds in 1991    | Developed by AT&T Bell Labs in the 1970s |
+| **Licensing**       | Open-source                          | Proprietary                           |
+| **Cost**            | Free                                 | Often requires a license fee          |
+| **Hardware Support**| Supports a wide range of hardware    | Limited to specific hardware          |
+
+---
+
+### **3. What is the Linux Kernel?**
+**Answer:**  
+The Linux kernel is the core component of the Linux operating system. It manages system resources, including CPU, memory, and I/O devices, and provides an interface for user-level programs to interact with hardware.
+
+---
+
+### **4. What is a shell in Linux?**
+**Answer:**  
+A shell is a command-line interpreter that allows users to interact with the operating system. Common shells include:
+- **Bash** (Bourne Again Shell)
+- **Zsh** (Z Shell)
+- **Fish** (Friendly Interactive Shell)
+
+---
+
+### **5. How do you check the current directory in Linux?**
+**Answer:**  
+Use the `pwd` (Print Working Directory) command:
+```bash
+pwd
+```
+
+---
+
+## **Intermediate Questions**
+
+### **6. What is the difference between `grep`, `awk`, and `sed`?**
+**Answer:**  
+- **`grep`:** Searches for patterns in files.
+  ```bash
+  grep "pattern" filename
+  ```
+- **`awk`:** Processes and formats text, often used for column-based data.
+  ```bash
+  awk '{print $1}' filename
+  ```
+- **`sed`:** Stream editor for filtering and transforming text.
+  ```bash
+  sed 's/old/new/g' filename
+  ```
+
+---
+
+### **7. How do you find files in Linux?**
+**Answer:**  
+Use the `find` command:
+```bash
+find /path/to/search -name "filename"
+```
+
+---
+
+### **8. What is the purpose of the `chmod` command?**
+**Answer:**  
+The `chmod` command changes file permissions. Permissions are represented by numbers:
+- `4` = Read (r)
+- `2` = Write (w)
+- `1` = Execute (x)
+
+Example:
+```bash
+chmod 755 filename
+```
+This sets:
+- Owner: Read, Write, Execute (`7`)
+- Group: Read, Execute (`5`)
+- Others: Read, Execute (`5`)
+
+---
+
+### **9. How do you check disk usage in Linux?**
+**Answer:**  
+Use the `df` command to check disk space:
+```bash
+df -h
+```
+Use the `du` command to check directory size:
+```bash
+du -sh /path/to/directory
+```
+
+---
+
+### **10. What is `cron` and how do you schedule a job?**
+**Answer:**  
+`cron` is a time-based job scheduler in Linux. To schedule a job, edit the crontab file:
+```bash
+crontab -e
+```
+Add a line in the following format:
+```
+* * * * * command_to_execute
+```
+Fields represent:
+- Minute (0–59)
+- Hour (0–23)
+- Day of the month (1–31)
+- Month (1–12)
+- Day of the week (0–7, where 0 and 7 are Sunday)
+
+---
+
+## **Advanced Questions**
+
+### **11. What is `systemd` and how does it differ from `init`?**
+**Answer:**  
+- **`systemd`:** A modern init system that manages system services and processes. It starts services in parallel, improving boot speed.
+- **`init`:** The traditional SysV init system that starts services sequentially.
+
+Check the current init system:
+```bash
+ps -p 1 -o comm=
+```
+
+---
+
+### **12. How do you monitor system performance in Linux?**
+**Answer:**  
+Use tools like:
+- `top` or `htop` for real-time monitoring.
+- `vmstat` for virtual memory statistics.
+- `iostat` for I/O performance.
+- `netstat` for network connections.
+
+---
+
+### **13. What is `iptables` and how is it used?**
+**Answer:**  
+`iptables` is a firewall tool used to configure rules for packet filtering and NAT. Example:
+```bash
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+```
+This allows incoming HTTP traffic on port 80.
+
+---
+
+### **14. How do you troubleshoot network issues in Linux?**
+**Answer:**  
+Use commands like:
+- `ping` to test connectivity.
+- `traceroute` to trace the path to a destination.
+- `netstat` or `ss` to check active connections.
+- `nslookup` or `dig` to query DNS.
+
+---
+
+### **15. What is LVM (Logical Volume Manager)?**
+**Answer:**  
+LVM allows flexible disk management by creating logical volumes on top of physical storage devices. Key components:
+- **Physical Volume (PV):** Actual storage device.
+- **Volume Group (VG):** Pool of PVs.
+- **Logical Volume (LV):** Virtual partition created from VG.
+
+Example:
+```bash
+pvcreate /dev/sdb
+vgcreate my_vg /dev/sdb
+lvcreate -L 10G -n my_lv my_vg
+```
+
+---
+
+## **Security Questions**
+
+### **16. How do you secure a Linux server?**
+**Answer:**  
+- Use strong passwords and enforce password policies.
+- Disable root login via SSH:
+  ```bash
+  PermitRootLogin no
+  ```
+- Update the system regularly:
+  ```bash
+  sudo apt update && sudo apt upgrade
+  ```
+- Use a firewall (`ufw` or `iptables`) to restrict access.
+- Monitor logs using tools like `auditd`.
+
+---
+
+### **17. What is SELinux, and how does it enhance security?**
+**Answer:**  
+SELinux (Security-Enhanced Linux) is a mandatory access control mechanism that enforces strict security policies. It restricts processes to the minimum permissions required to function.
+
+Check SELinux status:
+```bash
+sestatus
+```
+
+---
+
+### **18. How do you manage users and groups in Linux?**
+**Answer:**  
+- Add a user:
+  ```bash
+  sudo useradd username
+  ```
+- Set a password:
+  ```bash
+  sudo passwd username
+  ```
+- Add a user to a group:
+  ```bash
+  sudo usermod -aG groupname username
+  ```
+- Delete a user:
+  ```bash
+  sudo userdel username
+  ```
+
+---
+
+## **Networking Questions**
+
+### **19. How do you configure a static IP address in Linux?**
+**Answer:**  
+Edit the network configuration file (e.g., `/etc/network/interfaces` or `/etc/sysconfig/network-scripts/ifcfg-eth0`):
+```bash
+auto eth0
+iface eth0 inet static
+    address 192.168.1.10
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+```
+Restart the network service:
+```bash
+sudo systemctl restart networking
+```
+
+---
+
+### **20. What is SSH, and how do you use it?**
+**Answer:**  
+SSH (Secure Shell) is a protocol for secure remote access to servers. Connect to a server:
+```bash
+ssh username@hostname
+```
+Generate SSH keys:
+```bash
+ssh-keygen
+```
+Copy the public key to the server:
+```bash
+ssh-copy-id username@hostname
+```
+
