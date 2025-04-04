@@ -626,6 +626,270 @@ console.log(numbers.filter(x => x % 2 === 0)); // [2, 4]
 console.log(numbers.reduce((sum, x) => sum + x, 0)); // 15
 ```
 
+
+
+
+
+# TypeScript
+
+## 1. What is TypeScript?
+**Answer:**
+TypeScript is a typed superset of JavaScript developed by Microsoft that compiles to plain JavaScript. It adds optional static typing, classes, and interfaces.
+
+---
+
+## 2. Why use TypeScript over JavaScript?
+**Answer:**
+- Early error detection
+- Better tooling (autocompletion, refactoring)
+- Enhanced readability and maintainability
+- Large-scale application development support
+
+---
+
+## 3. What are some key features of TypeScript?
+**Answer:**
+- Static type checking
+- Interfaces
+- Classes and Inheritance
+- Enums
+- Type inference
+- Generics
+- Modules
+
+---
+
+## 4. How do you define a variable with a specific type in TypeScript?
+**Answer:**
+```ts
+let message: string = "Hello, TypeScript";
+```
+
+---
+
+## 5. What are interfaces in TypeScript?
+**Answer:**
+Interfaces define the shape of an object. They are used for type-checking.
+```ts
+interface Person {
+  name: string;
+  age: number;
+}
+```
+
+---
+
+## 6. What are the basic types in TypeScript?
+**Answer:**
+- `string`
+- `number`
+- `boolean`
+- `null`
+- `undefined`
+- `any`
+- `void`
+- `never`
+- `unknown`
+
+---
+
+## 7. What is `any` type?
+**Answer:**
+`any` disables type checking, allowing any type of value. Use it sparingly.
+```ts
+let data: any = 5;
+data = "text";
+```
+
+---
+
+## 8. What is `unknown` type?
+**Answer:**
+`unknown` is safer than `any`. You must perform type checking before using it.
+```ts
+let value: unknown = 10;
+if (typeof value === "number") {
+  console.log(value.toFixed(2));
+}
+```
+
+---
+
+## 9. What are generics in TypeScript?
+**Answer:**
+Generics allow for reusable components with variable types.
+```ts
+function identity<T>(arg: T): T {
+  return arg;
+}
+```
+
+---
+
+## 10. What is a tuple in TypeScript?
+**Answer:**
+Tuple allows you to express an array with fixed number and types of elements.
+```ts
+let user: [string, number] = ["Alice", 30];
+```
+
+---
+
+## 11. What is an enum in TypeScript?
+**Answer:**
+Enums are used to define named constants.
+```ts
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right
+}
+```
+
+---
+
+## 12. What is the difference between `interface` and `type`?
+**Answer:**
+- `interface` is best for objects and can be extended.
+- `type` is more flexible and can alias primitives, unions, and intersections.
+
+---
+
+## 13. How does type inference work?
+**Answer:**
+TypeScript automatically infers the type based on the assigned value.
+```ts
+let num = 5; // inferred as number
+```
+
+---
+
+## 14. What is type assertion?
+**Answer:**
+It tells the compiler to treat a variable as a specific type.
+```ts
+let someValue: any = "Hello";
+let strLength: number = (someValue as string).length;
+```
+
+---
+
+## 15. What is the difference between `public`, `private`, and `protected` in classes?
+**Answer:**
+- `public`: accessible everywhere
+- `private`: accessible only within the class
+- `protected`: accessible in the class and its subclasses
+
+---
+
+## 16. What is a union type?
+**Answer:**
+A union type allows a variable to hold more than one type.
+```ts
+let value: string | number;
+```
+
+---
+
+## 17. What is `never` type?
+**Answer:**
+`never` represents values that never occur (e.g., a function that always throws).
+```ts
+function throwError(): never {
+  throw new Error("Something went wrong");
+}
+```
+
+---
+
+## 18. How do modules work in TypeScript?
+**Answer:**
+Use `import` and `export` to manage modules.
+```ts
+// math.ts
+export function add(x: number, y: number): number {
+  return x + y;
+}
+
+// main.ts
+import { add } from "./math";
+```
+
+---
+
+## 19. What is the purpose of `tsconfig.json`?
+**Answer:**
+This file configures the behavior of the TypeScript compiler. It includes settings like module type, target version, and file inclusion.
+
+---
+
+## 20. How can you compile TypeScript?
+**Answer:**
+Using the TypeScript compiler (`tsc`):
+```bash
+tsc filename.ts
+```
+Or to compile a project:
+```bash
+tsc
+```
+
+---
+
+## 21. How can TypeScript be used with React?
+**Answer:**
+By using `.tsx` files and typing props, state, etc.
+```tsx
+interface Props {
+  name: string;
+}
+const Hello: React.FC<Props> = ({ name }) => <h1>Hello {name}</h1>;
+```
+
+---
+
+## 22. What are decorators in TypeScript?
+**Answer:**
+Decorators are special declarations used to annotate classes and class members (experimental feature).
+```ts
+function Log(target: any, key: string) {
+  console.log(`${key} was accessed`);
+}
+```
+
+---
+
+## 23. What is the difference between static and instance members in classes?
+**Answer:**
+- `static`: belongs to the class itself
+- instance: belongs to object instances of the class
+
+---
+
+## 24. How can you make a property optional?
+**Answer:**
+Add a `?` after the property name.
+```ts
+interface User {
+  name: string;
+  age?: number;
+}
+```
+
+---
+
+## 25. What is strict mode in TypeScript?
+**Answer:**
+Strict mode enables a set of strict type-checking options for better code safety. Enabled via `"strict": true` in `tsconfig.json`.
+
+
+
+
+
+
+
+
 # Nodejs
 ## 1. What is Node.js?
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. It is designed to build scalable network applications and allows for running JavaScript on the server side. It is event-driven, non-blocking, and uses a single-threaded event loop to handle multiple requests.
