@@ -61,7 +61,157 @@ del obj  # Now eligible for garbage collection
 gc.collect()  # Manually trigger garbage collection
 ```
 
+# SOLID Principles - Employment Questions & Answers
 
+## 1. What is SOLID in software engineering?
+**Answer:**
+SOLID is an acronym representing five design principles in object-oriented programming that make software more maintainable and scalable:
+- **S**: Single Responsibility Principle
+- **O**: Open/Closed Principle
+- **L**: Liskov Substitution Principle
+- **I**: Interface Segregation Principle
+- **D**: Dependency Inversion Principle
+
+---
+
+## 2. What is the Single Responsibility Principle (SRP)?
+**Answer:**
+A class should have **only one reason to change**, meaning it should have only one job or responsibility.
+
+✅ **Example (Bad):**
+```python
+class Report:
+    def calculate(self):
+        pass
+
+    def print_report(self):
+        pass  # violates SRP
+```
+
+✅ **Example (Good):**
+```python
+class Report:
+    def calculate(self):
+        pass
+
+class ReportPrinter:
+    def print_report(self, report):
+        pass
+```
+
+---
+
+## 3. What is the Open/Closed Principle (OCP)?
+**Answer:**
+Software entities (classes, modules, functions) should be **open for extension but closed for modification**. This means behavior can be extended without modifying existing code.
+
+✅ **Example:**
+Use inheritance or interfaces to add new functionality.
+```python
+class Shape:
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def area(self):
+        return 3.14 * r * r
+```
+
+---
+
+## 4. What is the Liskov Substitution Principle (LSP)?
+**Answer:**
+Objects of a superclass should be replaceable with objects of a subclass **without affecting the correctness** of the program.
+
+✅ **Example:**
+```python
+class Bird:
+    def fly(self):
+        pass
+
+class Sparrow(Bird):
+    def fly(self):
+        print("Flying")
+
+# Good: Sparrow can be used wherever Bird is expected.
+```
+
+❌ **Bad Example:**
+If a subclass throws an error when a method of the base class is used (e.g., Penguin not being able to fly), it violates LSP.
+
+---
+
+## 5. What is the Interface Segregation Principle (ISP)?
+**Answer:**
+Clients should **not be forced to depend on interfaces they do not use**. It's better to have many small, specific interfaces than one large, general-purpose one.
+
+✅ **Example (Good):**
+```python
+class Printer:
+    def print(self): pass
+
+class Scanner:
+    def scan(self): pass
+```
+
+❌ **Bad Example:**
+```python
+class MultiFunctionMachine:
+    def print(self): pass
+    def scan(self): pass
+    def fax(self): pass
+
+# Not all clients need fax()
+```
+
+---
+
+## 6. What is the Dependency Inversion Principle (DIP)?
+**Answer:**
+High-level modules should **not depend on low-level modules**. Both should depend on **abstractions**.
+Abstractions should not depend on details. Details should depend on abstractions.
+
+✅ **Example:**
+```python
+class Keyboard:
+    def get_input(self):
+        pass
+
+class WindowsMachine:
+    def __init__(self, keyboard: Keyboard):
+        self.keyboard = keyboard
+```
+Here, `WindowsMachine` depends on an abstraction `Keyboard`, not a concrete implementation.
+
+---
+
+## 7. Why are SOLID principles important in real-world software development?
+**Answer:**
+- Improves **code maintainability** and **readability**
+- Enhances **scalability** and **testability**
+- Reduces the risk of introducing bugs
+- Makes **refactoring** easier and safer
+
+---
+
+## 8. Can SOLID principles be applied in functional programming?
+**Answer:**
+Yes, while SOLID is rooted in OOP, many of the ideas like single responsibility and dependency inversion translate well to functional programming, albeit in a different form (e.g., using pure functions and dependency injection).
+
+---
+
+## 9. How does SRP help in unit testing?
+**Answer:**
+When a class has only one responsibility, its behavior is easier to test in isolation because it doesn't have side-effects or unrelated functionalities.
+
+---
+
+## 10. What happens when SOLID principles are not followed?
+**Answer:**
+- The code becomes **tightly coupled**
+- Difficult to **extend** or **maintain**
+- Harder to **test**
+- Higher chance of introducing **bugs** during changes
 
 
 # Git
