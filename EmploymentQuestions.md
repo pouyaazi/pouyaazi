@@ -1198,6 +1198,183 @@ const EnhancedComponent = withLogger(MyComponent);
 ```
 
 
+
+# Tailwind CSS - Employment Questions & Answers
+
+## 1. What is Tailwind CSS?
+**Answer:**
+Tailwind CSS is a utility-first CSS framework that provides low-level utility classes to build custom designs directly in your HTML without leaving your markup.
+
+---
+
+## 2. How is Tailwind different from other CSS frameworks like Bootstrap?
+**Answer:**
+- Tailwind uses utility classes, while Bootstrap uses predefined components.
+- Tailwind encourages custom designs, while Bootstrap follows a design system.
+- Tailwind provides more flexibility but requires more HTML classes.
+
+---
+
+## 3. What are utility classes in Tailwind?
+**Answer:**
+Utility classes are single-purpose classes like `text-center`, `bg-blue-500`, `p-4` that apply specific CSS styles. They allow for rapid UI building without writing custom CSS.
+
+---
+
+## 4. What is JIT (Just-in-Time) mode in Tailwind?
+**Answer:**
+JIT mode generates styles on-demand as you author your templates. It drastically improves build times and reduces output size.
+
+To enable JIT:
+```js
+// tailwind.config.js
+module.exports = {
+  mode: 'jit',
+  content: ['./src/**/*.{html,js}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+---
+
+## 5. How do you customize Tailwind's default theme?
+**Answer:**
+You can customize the theme by editing `tailwind.config.js`:
+```js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1DA1F2',
+      },
+      fontFamily: {
+        custom: ['Poppins', 'sans-serif'],
+      },
+    },
+  },
+};
+```
+
+---
+
+## 6. What are variants in Tailwind CSS?
+**Answer:**
+Variants are modifiers used to apply styles under specific conditions like `hover:`, `focus:`, `sm:`, etc.
+```html
+<button class="bg-blue-500 hover:bg-blue-700 text-white">Click Me</button>
+```
+
+---
+
+## 7. How do you install Tailwind CSS in a project?
+**Answer:**
+Using npm:
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+Then, include it in your CSS:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+---
+
+## 8. What is the purpose of `@apply` directive?
+**Answer:**
+The `@apply` directive allows you to use Tailwind utility classes in your custom CSS:
+```css
+.btn {
+  @apply px-4 py-2 bg-blue-500 text-white rounded;
+}
+```
+
+---
+
+## 9. What are some benefits of using Tailwind CSS?
+**Answer:**
+- Faster development
+- Customizable
+- No need to write custom CSS
+- Great for design systems
+- Encourages consistent styling
+
+---
+
+## 10. How do you remove unused styles in production?
+**Answer:**
+Tailwind uses **PurgeCSS** (built-in in v3+) to remove unused classes by scanning your content files:
+```js
+content: ['./src/**/*.{html,js,jsx,ts,tsx}']
+```
+
+---
+
+## 11. How do you make a responsive layout with Tailwind?
+**Answer:**
+Use responsive prefixes like `sm:`, `md:`, `lg:`, `xl:`, `2xl:`:
+```html
+<div class="w-full md:w-1/2 lg:w-1/3"></div>
+```
+
+---
+
+## 12. What is the difference between `container` and `max-w-*` classes?
+**Answer:**
+- `container`: Automatically adds max-width and padding at different breakpoints.
+- `max-w-*`: Explicitly sets max-width to a specific value.
+
+---
+
+## 13. How can you center a div using Tailwind CSS?
+**Answer:**
+Using Flexbox:
+```html
+<div class="flex items-center justify-center h-screen">
+  <div class="bg-gray-200 p-4">Centered</div>
+</div>
+```
+Or with margin auto:
+```html
+<div class="mx-auto w-1/2">Centered</div>
+```
+
+---
+
+## 14. How do you handle dark mode in Tailwind?
+**Answer:**
+Enable dark mode in `tailwind.config.js`:
+```js
+module.exports = {
+  darkMode: 'class',
+}
+```
+Then use classes like:
+```html
+<div class="bg-white dark:bg-black text-black dark:text-white"></div>
+```
+
+---
+
+## 15. How do you extend Tailwind with plugins?
+**Answer:**
+Install a plugin and register it:
+```bash
+npm install @tailwindcss/forms
+```
+```js
+// tailwind.config.js
+plugins: [require('@tailwindcss/forms')],
+```
+
+
+
+
 # Next.js
 
 ## 1. What is Next.js?
