@@ -1,3 +1,57 @@
+# Public
+
+## What is Garbage Collection?
+Garbage Collection (GC) is the process of **automatically reclaiming memory** that is no longer in use by a program. It helps prevent **memory leaks** and optimizes memory usage without requiring manual memory management.
+
+---
+
+### How Does Garbage Collection Work?
+Garbage collectors typically follow these steps:
+
+1. **Mark:** Identify objects that are still in use (reachable).  
+2. **Sweep:** Remove objects that are no longer referenced.  
+3. **Compact (optional):** Rearrange memory to avoid fragmentation.
+
+---
+
+### Garbage Collection in Different Languages
+- **JavaScript (V8 Engine):** Uses a **Mark-and-Sweep** algorithm.
+- **Python:** Uses **Reference Counting** and **Cyclic Garbage Collection**.
+- **Java:** Uses **Generational Garbage Collection** (Young, Old, and PermGen/Metaspace).
+- **C++:** No automatic garbage collection; developers must manage memory manually.
+
+---
+
+### Pros & Cons of Garbage Collection
+
+✅ **Pros:**  
+- Reduces memory leaks.  
+- Improves developer productivity.  
+- Handles memory allocation dynamically.  
+
+❌ **Cons:**  
+- Adds overhead to performance.  
+- Not deterministic (GC runs unpredictably).  
+- May cause application pauses (Stop-the-World events).  
+
+---
+
+## Example: Garbage Collection in JavaScript
+JavaScript uses a **Mark-and-Sweep** algorithm for garbage collection:
+
+```javascript
+function demoGC() {
+    let obj = { name: "Garbage Collection Example" };
+    console.log(obj); // Object is reachable
+
+    obj = null; // Now eligible for garbage collection
+}
+demoGC();
+
+
+
+
+
 # Git
 
 ## 1. What is Git?
