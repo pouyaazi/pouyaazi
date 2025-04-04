@@ -3308,7 +3308,168 @@ logger.info("Application started")
 
 
 
+# RabbitMQ
 
+## 1. What is RabbitMQ?
+**Answer:**
+RabbitMQ is an open-source message broker software that facilitates communication between applications by sending and receiving messages through queues. It implements the Advanced Message Queuing Protocol (AMQP).
+
+---
+
+## 2. Why do we use RabbitMQ?
+**Answer:**
+- To decouple microservices
+- To ensure asynchronous communication
+- To improve scalability and performance
+- To handle background tasks or long-running processes
+
+---
+
+## 3. How does RabbitMQ work?
+**Answer:**
+RabbitMQ works by allowing **producers** to send messages to an **exchange**, which routes messages to one or more **queues**. **Consumers** then read messages from those queues.
+
+---
+
+## 4. What are the main components of RabbitMQ?
+**Answer:**
+- **Producer**: Sends messages
+- **Exchange**: Routes messages
+- **Queue**: Stores messages
+- **Consumer**: Processes messages
+- **Bindings**: Define the relationship between exchange and queue
+
+---
+
+## 5. What are different types of exchanges in RabbitMQ?
+**Answer:**
+- **Direct Exchange**: Routes messages to queues with a specific routing key.
+- **Topic Exchange**: Routes messages based on pattern matching.
+- **Fanout Exchange**: Routes messages to all bound queues.
+- **Headers Exchange**: Uses headers instead of routing keys for routing.
+
+---
+
+## 6. What is a routing key in RabbitMQ?
+**Answer:**
+A routing key is a string attached to the message that the exchange uses to determine how to route the message to the queue(s).
+
+---
+
+## 7. What is the difference between a queue and an exchange?
+**Answer:**
+- A **queue** stores messages until they are consumed.
+- An **exchange** receives messages from producers and routes them to queues based on rules.
+
+---
+
+## 8. How do you ensure message durability in RabbitMQ?
+**Answer:**
+- Declare the queue as durable: `durable: true`
+- Set message delivery mode to persistent: `deliveryMode: 2`
+- Use publisher confirms to ensure message was written
+
+---
+
+## 9. What is acknowledgment in RabbitMQ?
+**Answer:**
+Acknowledgment is a signal sent by the consumer to RabbitMQ to confirm that a message has been processed. Without it, RabbitMQ can re-deliver the message.
+
+---
+
+## 10. What is prefetch in RabbitMQ?
+**Answer:**
+Prefetch limits the number of unacknowledged messages sent to a consumer at a time. It helps in load balancing and avoiding overloading consumers.
+
+```js
+channel.prefetch(1); // sends 1 message at a time
+```
+
+---
+
+## 11. What is dead-letter exchange (DLX)?
+**Answer:**
+A DLX is an exchange where RabbitMQ routes messages that are:
+- Rejected by the consumer
+- Expired (TTL)
+- Overflowed in the queue
+This helps in monitoring or retrying failed messages.
+
+---
+
+## 12. How do you implement retry mechanism in RabbitMQ?
+**Answer:**
+- Use TTL (Time To Live) + DLX to requeue messages after a delay
+- Use a retry exchange with exponential backoff logic
+
+---
+
+## 13. What is the difference between auto acknowledgment and manual acknowledgment?
+**Answer:**
+- **Auto-ack**: Message is considered delivered as soon as it is sent to consumer
+- **Manual ack**: Consumer must explicitly acknowledge after processing
+
+Manual ack is safer to avoid message loss in case of failure.
+
+---
+
+## 14. How does RabbitMQ handle message ordering?
+**Answer:**
+Messages are ordered **within a single queue**. If multiple queues or consumers are used, order is not guaranteed.
+
+---
+
+## 15. How do you monitor RabbitMQ?
+**Answer:**
+- RabbitMQ Management Plugin (web UI)
+- CLI tools (`rabbitmqctl`, `rabbitmq-diagnostics`)
+- External tools: Prometheus, Grafana, Datadog
+
+---
+
+## 16. What are some common use cases for RabbitMQ?
+**Answer:**
+- Background job processing
+- Decoupled microservice communication
+- Real-time data processing pipelines
+- Task queues in web applications
+
+---
+
+## 17. How does RabbitMQ compare with Kafka?
+**Answer:**
+| Feature        | RabbitMQ          | Kafka             |
+|----------------|-------------------|--------------------|
+| Message Model  | Queues (push)     | Logs (pull)        |
+| Performance    | Lower latency     | Higher throughput  |
+| Ordering       | Queue-level       | Partition-level    |
+| Persistence    | Optional          | Default durable    |
+| Use Case       | Task queues       | Event streaming    |
+
+---
+
+## 18. What is connection and channel in RabbitMQ?
+**Answer:**
+- **Connection**: A TCP connection to RabbitMQ server
+- **Channel**: A virtual connection inside the connection for multiplexing
+
+Best practice: use 1 connection and multiple channels.
+
+---
+
+## 19. What is the default port for RabbitMQ?
+**Answer:**
+- AMQP: `5672`
+- HTTP management: `15672`
+
+---
+
+## 20. How do you delete a queue in RabbitMQ?
+**Answer:**
+You can delete a queue using the management UI, or via code/CLI:
+```bash
+rabbitmqadmin delete queue name=my-queue
+```
 
 
 
