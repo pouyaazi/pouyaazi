@@ -3735,5 +3735,617 @@ You can delete a queue using the management UI, or via code/CLI:
 rabbitmqadmin delete queue name=my-queue
 ```
 
+# SQL
 
 
+### **1. What is SQL?**
+**Answer:**  
+SQL (Structured Query Language) is a domain-specific language used for managing and manipulating relational databases. It is used to query, insert, update, and delete data, as well as create and modify database structures.
+
+---
+
+### **2. What are the different types of SQL commands?**
+**Answer:**  
+- **DDL (Data Definition Language):** Used to define and modify database structures.
+  - `CREATE`, `ALTER`, `DROP`, `TRUNCATE`
+- **DML (Data Manipulation Language):** Used to manipulate data in the database.
+  - `SELECT`, `INSERT`, `UPDATE`, `DELETE`
+- **DCL (Data Control Language):** Used to control access to data.
+  - `GRANT`, `REVOKE`
+- **TCL (Transaction Control Language):** Used to manage transactions.
+  - `COMMIT`, `ROLLBACK`, `SAVEPOINT`
+
+---
+
+### **3. What is a primary key?**
+**Answer:**  
+A primary key is a column or a set of columns that uniquely identifies each row in a table. It enforces entity integrity by ensuring that no two rows have the same primary key value and that the primary key cannot contain NULL values.
+
+Example:
+```sql
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+```
+
+---
+
+### **4. What is a foreign key?**
+**Answer:**  
+A foreign key is a column or a set of columns in one table that refers to the primary key of another table. It establishes a relationship between two tables and ensures referential integrity.
+
+Example:
+```sql
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+```
+
+---
+
+### **5. What is normalization?**
+**Answer:**  
+Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity. It involves dividing large tables into smaller, related tables and defining relationships between them.
+
+Common normal forms:
+- **1NF:** Eliminate duplicate columns and ensure atomic values.
+- **2NF:** Remove partial dependencies.
+- **3NF:** Remove transitive dependencies.
+
+---
+
+## **Intermediate Questions**
+
+### **6. What is the difference between `WHERE` and `HAVING`?**
+**Answer:**  
+- **`WHERE`:** Filters rows before grouping and aggregation.
+- **`HAVING`:** Filters groups after aggregation.
+
+Example:
+```sql
+SELECT department, COUNT(*) AS employee_count
+FROM employees
+WHERE salary > 50000
+GROUP BY department
+HAVING COUNT(*) > 5;
+```
+
+---
+
+### **7. What are aggregate functions? Provide examples.**
+**Answer:**  
+Aggregate functions perform calculations on a set of values and return a single value. Common aggregate functions include:
+- `COUNT()`: Counts the number of rows.
+- `SUM()`: Calculates the total of numeric values.
+- `AVG()`: Computes the average of numeric values.
+- `MIN()`: Finds the minimum value.
+- `MAX()`: Finds the maximum value.
+
+Example:
+```sql
+SELECT department, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department;
+```
+
+---
+
+### **8. Explain the difference between `INNER JOIN`, `LEFT JOIN`, and `RIGHT JOIN`.**
+**Answer:**  
+- **`INNER JOIN`:** Returns only the matching rows from both tables.
+  ```sql
+  SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.id;
+  ```
+
+- **`LEFT JOIN`:** Returns all rows from the left table and matching rows from the right table. If no match is found, NULL values are returned for the right table.
+  ```sql
+  SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;
+  ```
+
+- **`RIGHT JOIN`:** Returns all rows from the right table and matching rows from the left table. If no match is found, NULL values are returned for the left table.
+  ```sql
+  SELECT * FROM table1 RIGHT JOIN table2 ON table1.id = table2.id;
+  ```
+
+---
+
+### **9. What is a subquery? Provide an example.**
+**Answer:**  
+A subquery is a query nested inside another query. It can be used in `SELECT`, `INSERT`, `UPDATE`, or `DELETE` statements.
+
+Example:
+```sql
+SELECT name
+FROM employees
+WHERE department_id IN (SELECT department_id FROM departments WHERE location = 'New York');
+```
+
+---
+
+### **10. What is an index in SQL? Why is it used?**
+**Answer:**  
+An index is a database object that improves the speed of data retrieval operations on a table. It works similarly to an index in a book, allowing the database to quickly locate rows without scanning the entire table.
+
+Example of creating an index:
+```sql
+CREATE INDEX idx_employee_name ON employees (name);
+```
+
+---
+
+## **Advanced Questions**
+
+### **11. What is a self-join? Provide an example.**
+**Answer:**  
+A self-join is a join where a table is joined with itself. It is useful for querying hierarchical data or comparing rows within the same table.
+
+Example:
+```sql
+SELECT e1.name AS employee, e2.name AS manager
+FROM employees e1
+JOIN employees e2 ON e1.manager_id = e2.employee_id;
+```
+
+---
+
+### **12. What is a view in SQL?**
+**Answer:**  
+A view is a virtual table created by a query. It does not store data itself but provides a way to simplify complex queries and restrict access to specific data.
+
+Example:
+```sql
+CREATE VIEW high_salary_employees AS
+SELECT name, salary
+FROM employees
+WHERE salary > 100000;
+```
+
+---
+
+### **13. How do you handle NULL values in SQL?**
+**Answer:**  
+- Use `IS NULL` or `IS NOT NULL` to check for NULL values.
+- Use `COALESCE()` to replace NULL values with a default value.
+
+Example:
+```sql
+SELECT COALESCE(middle_name, 'N/A') AS middle_name FROM employees;
+```
+
+---
+
+### **14. What is a transaction in SQL?**
+**Answer:**  
+A transaction is a sequence of one or more SQL statements executed as a single unit of work. It ensures ACID properties (Atomicity, Consistency, Isolation, Durability).
+
+Example:
+```sql
+BEGIN TRANSACTION;
+
+UPDATE accounts SET balance = balance - 100 WHERE account_id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE account_id = 2;
+
+COMMIT;
+```
+
+---
+
+### **15. What is the difference between `UNION` and `UNION ALL`?**
+**Answer:**  
+- **`UNION`:** Combines the results of two queries and removes duplicate rows.
+- **`UNION ALL`:** Combines the results of two queries and includes duplicate rows.
+
+Example:
+```sql
+SELECT name FROM employees
+UNION
+SELECT name FROM managers;
+
+SELECT name FROM employees
+UNION ALL
+SELECT name FROM managers;
+```
+
+
+
+
+
+# PostgreSQL
+
+This document contains a comprehensive list of PostgreSQL-related employment questions along with their answers. These questions are designed to assess a candidate's knowledge of PostgreSQL, ranging from basic concepts to advanced topics.
+
+---
+
+## **Basic Questions**
+
+### **1. What is PostgreSQL?**
+**Answer:**  
+PostgreSQL is an open-source, object-relational database management system (ORDBMS). It is known for its reliability, scalability, and adherence to SQL standards. PostgreSQL supports advanced features such as foreign keys, triggers, views, transactions, and more.
+
+---
+
+### **2. What are the key features of PostgreSQL?**
+**Answer:**  
+- ACID compliance (Atomicity, Consistency, Isolation, Durability).
+- Extensibility (custom data types, functions, and operators).
+- Support for JSON and JSONB for NoSQL-like functionality.
+- Full-text search capabilities.
+- Advanced indexing (B-tree, Hash, GiST, SP-GiST, GIN, BRIN).
+- Multi-version concurrency control (MVCC) for high performance.
+- Support for multiple programming languages (PL/pgSQL, PL/Python, etc.).
+
+---
+
+### **3. How do you start and stop the PostgreSQL server?**
+**Answer:**  
+To start the PostgreSQL server:
+```bash
+sudo systemctl start postgresql
+```
+
+To stop the PostgreSQL server:
+```bash
+sudo systemctl stop postgresql
+```
+
+To check the status of the PostgreSQL server:
+```bash
+sudo systemctl status postgresql
+```
+
+---
+
+### **4. What is a schema in PostgreSQL?**
+**Answer:**  
+A schema in PostgreSQL is a namespace that contains named database objects such as tables, views, indexes, and sequences. Schemas help organize database objects and avoid naming conflicts. The default schema is `public`.
+
+---
+
+### **5. How do you create a new database in PostgreSQL?**
+**Answer:**  
+You can create a new database using the following SQL command:
+```sql
+CREATE DATABASE database_name;
+```
+
+Alternatively, you can use the `createdb` command-line tool:
+```bash
+createdb database_name
+```
+
+---
+
+## **Intermediate Questions**
+
+### **6. What is the difference between `DROP` and `TRUNCATE`?**
+**Answer:**  
+- **`DROP`:** Removes the entire table, including its structure and data, from the database. Once dropped, the table cannot be recovered.
+  ```sql
+  DROP TABLE table_name;
+  ```
+
+- **`TRUNCATE`:** Removes all rows from a table but retains the table structure. It is faster than `DELETE` because it does not scan the table.
+  ```sql
+  TRUNCATE TABLE table_name;
+  ```
+
+---
+
+### **7. Explain the difference between `INNER JOIN`, `LEFT JOIN`, and `RIGHT JOIN`.**
+**Answer:**  
+- **`INNER JOIN`:** Returns only the matching rows from both tables.
+  ```sql
+  SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.id;
+  ```
+
+- **`LEFT JOIN`:** Returns all rows from the left table and matching rows from the right table. If no match is found, NULL values are returned for the right table.
+  ```sql
+  SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;
+  ```
+
+- **`RIGHT JOIN`:** Returns all rows from the right table and matching rows from the left table. If no match is found, NULL values are returned for the left table.
+  ```sql
+  SELECT * FROM table1 RIGHT JOIN table2 ON table1.id = table2.id;
+  ```
+
+---
+
+### **8. What is an index in PostgreSQL? Why is it used?**
+**Answer:**  
+An index is a database object that improves the speed of data retrieval operations on a table. It works similarly to an index in a book, allowing the database to quickly locate rows without scanning the entire table.
+
+Common types of indexes in PostgreSQL:
+- B-tree
+- Hash
+- GiST
+- GIN
+
+Example of creating an index:
+```sql
+CREATE INDEX index_name ON table_name (column_name);
+```
+
+---
+
+### **9. How do you backup and restore a PostgreSQL database?**
+**Answer:**  
+- **Backup:** Use the `pg_dump` utility to create a backup of a database.
+  ```bash
+  pg_dump -U username -d database_name -f backup_file.sql
+  ```
+
+- **Restore:** Use the `psql` command to restore a database from a backup file.
+  ```bash
+  psql -U username -d database_name -f backup_file.sql
+  ```
+
+---
+
+### **10. What is MVCC in PostgreSQL?**
+**Answer:**  
+MVCC (Multi-Version Concurrency Control) is a technique used by PostgreSQL to allow multiple transactions to occur simultaneously without interfering with each other. Each transaction sees a snapshot of the database at the time it started, ensuring consistency and isolation.
+
+---
+
+## **Advanced Questions**
+
+### **11. What is a trigger in PostgreSQL?**
+**Answer:**  
+A trigger is a database object that automatically executes a specified function when certain events occur (e.g., INSERT, UPDATE, DELETE). Triggers are often used to enforce business rules or maintain data integrity.
+
+Example of creating a trigger:
+```sql
+CREATE TRIGGER trigger_name
+AFTER INSERT ON table_name
+FOR EACH ROW
+EXECUTE FUNCTION function_name();
+```
+
+---
+
+### **12. How do you handle JSON data in PostgreSQL?**
+**Answer:**  
+PostgreSQL provides two data types for handling JSON data:
+- **`JSON`:** Stores JSON data as plain text.
+- **`JSONB`:** Stores JSON data in a binary format, allowing faster querying and indexing.
+
+Example of querying JSONB data:
+```sql
+SELECT data->>'key' AS value FROM table_name WHERE data->>'key' = 'value';
+```
+
+---
+
+### **13. What is a CTE (Common Table Expression)?**
+**Answer:**  
+A CTE is a temporary result set that can be referenced within a SELECT, INSERT, UPDATE, or DELETE statement. It simplifies complex queries by breaking them into smaller, reusable parts.
+
+Example:
+```sql
+WITH cte_name AS (
+    SELECT column1, column2 FROM table_name WHERE condition
+)
+SELECT * FROM cte_name;
+```
+
+---
+
+### **14. How do you optimize a query in PostgreSQL?**
+**Answer:**  
+- Use indexes on frequently queried columns.
+- Avoid using `SELECT *` and retrieve only necessary columns.
+- Use `EXPLAIN` and `EXPLAIN ANALYZE` to analyze query execution plans.
+- Optimize joins by ensuring proper indexing on join columns.
+- Avoid correlated subqueries and use CTEs or derived tables instead.
+
+---
+
+### **15. What is a materialized view in PostgreSQL?**
+**Answer:**  
+A materialized view is a database object that stores the result of a query physically. Unlike a regular view, which executes the query every time it is accessed, a materialized view stores the data and needs to be refreshed manually or periodically.
+
+Example:
+```sql
+CREATE MATERIALIZED VIEW mv_name AS
+SELECT column1, column2 FROM table_name;
+
+-- Refresh the materialized view
+REFRESH MATERIALIZED VIEW mv_name;
+```
+
+
+# Comparison of Index Types in PostgreSQL
+
+PostgreSQL supports several types of indexes, each designed for specific use cases and data access patterns. Below is a detailed comparison of the different index types available in PostgreSQL:
+
+---
+
+## **1. B-Tree Index**
+### **Description:**
+The B-Tree (Balanced Tree) index is the default and most commonly used index type in PostgreSQL. It is suitable for equality and range queries.
+
+### **Use Cases:**
+- Equality conditions (`=`).
+- Range queries (`<`, `<=`, `>`, `>=`).
+- Sorting and ordering (`ORDER BY`).
+
+### **Advantages:**
+- Highly versatile and efficient for most queries.
+- Supports both equality and range conditions.
+- Automatically used by the query planner for many operations.
+
+### **Limitations:**
+- Not ideal for complex data structures like arrays or JSON.
+
+### **Example:**
+```sql
+CREATE INDEX idx_employee_name ON employees (name);
+```
+
+---
+
+## **2. Hash Index**
+### **Description:**
+Hash indexes are optimized for equality comparisons (`=`). They use a hash function to map keys to locations in the index.
+
+### **Use Cases:**
+- Equality conditions (`=`).
+
+### **Advantages:**
+- Faster than B-Tree for simple equality lookups.
+- Requires less disk space compared to B-Tree.
+
+### **Limitations:**
+- Does not support range queries or sorting.
+- Less robust in older versions of PostgreSQL (prior to version 10, hash indexes were not WAL-logged, making them less reliable).
+
+### **Example:**
+```sql
+CREATE INDEX idx_employee_id_hash ON employees USING HASH (employee_id);
+```
+
+---
+
+## **3. GiST (Generalized Search Tree) Index**
+### **Description:**
+GiST is a flexible indexing framework that supports various data types and operations, including full-text search and geometric data.
+
+### **Use Cases:**
+- Full-text search (`tsvector`).
+- Geometric and spatial data (e.g., points, polygons).
+- Custom data types.
+
+### **Advantages:**
+- Supports complex data types and custom operators.
+- Useful for multi-dimensional data.
+
+### **Limitations:**
+- Slower for simple queries compared to B-Tree.
+- Requires more storage space.
+
+### **Example:**
+```sql
+CREATE INDEX idx_document_search ON documents USING GIST (to_tsvector('english', content));
+```
+
+---
+
+## **4. GIN (Generalized Inverted Index)**
+### **Description:**
+GIN indexes are designed for handling composite values, such as arrays, JSONB, and full-text search. They are particularly efficient for "contains" queries.
+
+### **Use Cases:**
+- Arrays (`ARRAY` type).
+- JSONB (`@>` operator for containment).
+- Full-text search (`tsvector`).
+
+### **Advantages:**
+- Efficient for searching within complex data structures.
+- Optimized for "contains" operations.
+
+### **Limitations:**
+- Slower to update compared to B-Tree.
+- Higher storage requirements.
+
+### **Example:**
+```sql
+CREATE INDEX idx_jsonb_data ON table_name USING GIN (jsonb_column);
+```
+
+---
+
+## **5. BRIN (Block Range INdex)**
+### **Description:**
+BRIN indexes are designed for large tables with naturally ordered data (e.g., time-series data). They store summary information about ranges of blocks rather than individual rows.
+
+### **Use Cases:**
+- Large datasets with sequential or ordered data (e.g., timestamps, IDs).
+- Time-series databases.
+
+### **Advantages:**
+- Extremely space-efficient.
+- Fast for queries on large, ordered datasets.
+
+### **Limitations:**
+- Only effective for data with natural ordering.
+- Limited functionality compared to other index types.
+
+### **Example:**
+```sql
+CREATE INDEX idx_timestamp_brin ON logs USING BRIN (log_time);
+```
+
+---
+
+## **6. SP-GiST (Space-Partitioned GiST)**
+### **Description:**
+SP-GiST is an extension of GiST that partitions data into non-overlapping regions. It is useful for data types that have natural clustering, such as text or geometric data.
+
+### **Use Cases:**
+- Prefix matching (e.g., IP addresses, URLs).
+- Geometric data (e.g., points, polygons).
+
+### **Advantages:**
+- Efficient for partitioned or clustered data.
+- Supports custom data types and operators.
+
+### **Limitations:**
+- Complex to implement and maintain.
+- Limited use cases compared to B-Tree or GIN.
+
+### **Example:**
+```sql
+CREATE INDEX idx_ip_address_spgist ON connections USING SPGIST (ip_address);
+```
+
+---
+
+## **7. Bloom Index**
+### **Description:**
+A Bloom index is a space-efficient probabilistic data structure used for equality queries. It uses a Bloom filter to determine whether a value might exist in the dataset.
+
+### **Use Cases:**
+- Equality conditions (`=`).
+- Multi-column queries.
+
+### **Advantages:**
+- Space-efficient for large datasets.
+- Effective for multi-column indexing.
+
+### **Limitations:**
+- Probabilistic results (may produce false positives).
+- Does not support range queries or sorting.
+
+### **Example:**
+```sql
+CREATE EXTENSION bloom;
+CREATE INDEX idx_bloom_employee ON employees USING bloom (name, department);
+```
+
+---
+
+## **Comparison Table**
+
+| **Index Type** | **Best For**                     | **Supports Range Queries** | **Efficiency**          | **Storage**         | **Use Case Example**                     |
+|-----------------|----------------------------------|----------------------------|-------------------------|---------------------|------------------------------------------|
+| **B-Tree**      | Equality, range, sorting         | Yes                        | High                   | Moderate            | General-purpose queries                  |
+| **Hash**        | Equality                        | No                         | Very high (for `=`)    | Low                 | Simple equality lookups                  |
+| **GiST**        | Full-text, geometric, custom    | Yes                        | Moderate               | High               | Spatial queries, full-text search        |
+| **GIN**         | Arrays, JSONB, full-text        | No                         | High (for "contains")  | High               | Searching within JSONB or arrays         |
+| **BRIN**        | Large, ordered datasets         | Yes                        | Very high (for ranges) | Very low            | Time-series data, logs                   |
+| **SP-GiST**     | Partitioned/clustering data     | Yes                        | Moderate               | High               | Prefix matching, geometric queries       |
+| **Bloom**       | Multi-column equality queries   | No                         | Moderate               | Low                 | Large datasets with equality conditions |
+
+---
+
+## **When to Use Which Index?**
+- Use **B-Tree** for general-purpose queries involving equality, range, or sorting.
+- Use **Hash** for simple equality lookups where speed is critical.
+- Use **GiST** for full-text search, geometric data, or custom data types.
+- Use **GIN** for arrays, JSONB, or "contains" queries.
+- Use **BRIN** for large, ordered datasets like time-series data.
+- Use **SP-GiST** for partitioned or clustered data.
+- Use **Bloom** for multi-column equality queries on large datasets.
