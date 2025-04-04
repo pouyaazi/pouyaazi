@@ -4349,3 +4349,196 @@ CREATE INDEX idx_bloom_employee ON employees USING bloom (name, department);
 - Use **BRIN** for large, ordered datasets like time-series data.
 - Use **SP-GiST** for partitioned or clustered data.
 - Use **Bloom** for multi-column equality queries on large datasets.
+
+
+# MongoDB 
+
+## **Basic Questions**
+
+### **1. What is MongoDB?**
+**Answer:**  
+MongoDB is a NoSQL, document-oriented database that stores data in flexible, JSON-like documents (BSON format). It is designed for scalability, high performance, and ease of use, making it ideal for handling large volumes of unstructured or semi-structured data.
+
+---
+
+### **2. What are the key features of MongoDB?**
+**Answer:**  
+- Schema-less design: Documents can have different structures within the same collection.
+- High performance: Supports indexing, sharding, and replication.
+- Scalability: Horizontal scaling using sharding.
+- Flexible querying: Supports rich queries, including aggregation pipelines.
+- Replication: Ensures high availability with replica sets.
+- BSON format: Stores data in a binary JSON format.
+
+---
+
+### **3. What is a document in MongoDB?**
+**Answer:**  
+A document in MongoDB is a record stored in BSON (Binary JSON) format. It consists of key-value pairs and can represent complex hierarchical relationships.
+
+Example:
+```json
+{
+  "_id": ObjectId("650b9c1e8f1d2a3c4d5e6f7g"),
+  "name": "John Doe",
+  "age": 30,
+  "address": {
+    "city": "New York",
+    "zip": "10001"
+  }
+}
+```
+
+---
+
+### **4. What is a collection in MongoDB?**
+**Answer:**  
+A collection in MongoDB is a group of documents, similar to a table in relational databases. Unlike tables, collections do not enforce a strict schema, allowing documents within the same collection to have different fields.
+
+---
+
+### **5. How do you insert a document into a collection?**
+**Answer:**  
+You can use the `insertOne()` or `insertMany()` methods to insert documents into a collection.
+
+Example:
+```javascript
+db.collection_name.insertOne({
+  name: "Alice",
+  age: 25
+});
+
+db.collection_name.insertMany([
+  { name: "Bob", age: 30 },
+  { name: "Charlie", age: 35 }
+]);
+```
+
+---
+
+## **Intermediate Questions**
+
+### **6. What is the difference between `find()` and `findOne()`?**
+**Answer:**  
+- **`find()`:** Returns a cursor containing all matching documents.
+- **`findOne()`:** Returns only the first matching document.
+
+Example:
+```javascript
+// Returns all documents where age > 25
+db.collection_name.find({ age: { $gt: 25 } });
+
+// Returns the first document where age > 25
+db.collection_name.findOne({ age: { $gt: 25 } });
+```
+
+---
+
+### **7. Explain the concept of indexing in MongoDB.**
+**Answer:**  
+Indexing improves query performance by allowing MongoDB to quickly locate data without scanning the entire collection. MongoDB supports various types of indexes, such as single-field, compound, and multi-key indexes.
+
+Example of creating an index:
+```javascript
+db.collection_name.createIndex({ name: 1 }); // Ascending index on "name"
+```
+
+---
+
+### **8. What is the purpose of the `_id` field in MongoDB?**
+**Answer:**  
+The `_id` field is a unique identifier for each document in a collection. If not explicitly provided, MongoDB automatically generates an `ObjectId` for this field.
+
+---
+
+### **9. What are embedded documents in MongoDB?**
+**Answer:**  
+Embedded documents are sub-documents stored within a parent document. They allow you to model hierarchical relationships directly within a single document.
+
+Example:
+```json
+{
+  "_id": ObjectId("650b9c1e8f1d2a3c4d5e6f7g"),
+  "name": "John Doe",
+  "address": {
+    "city": "New York",
+    "zip": "10001"
+  }
+}
+```
+
+---
+
+### **10. What is the aggregation framework in MongoDB?**
+**Answer:**  
+The aggregation framework is a powerful tool for performing complex data transformations and analyses. It processes data in stages, such as filtering, grouping, and sorting, using pipelines.
+
+Example:
+```javascript
+db.collection_name.aggregate([
+  { $match: { age: { $gt: 25 } } },
+  { $group: { _id: "$city", total: { $sum: 1 } } }
+]);
+```
+
+---
+
+## **Advanced Questions**
+
+### **11. What is sharding in MongoDB?**
+**Answer:**  
+Sharding is the process of distributing data across multiple servers to improve scalability and performance. Each shard contains a subset of the data, and a shard key determines how data is distributed.
+
+---
+
+### **12. What is replication in MongoDB?**
+**Answer:**  
+Replication ensures high availability by maintaining multiple copies of data across different servers (replica sets). One node acts as the primary, while others act as secondaries.
+
+---
+
+### **13. How do you perform backups in MongoDB?**
+**Answer:**  
+You can use the `mongodump` utility to create backups and the `mongorestore` utility to restore data.
+
+Example:
+```bash
+# Backup
+mongodump --db database_name --out /path/to/backup
+
+# Restore
+mongorestore --db database_name /path/to/backup
+```
+
+---
+
+### **14. What are capped collections in MongoDB?**
+**Answer:**  
+Capped collections are fixed-size collections that maintain insertion order and overwrite old documents when they reach their size limit. They are useful for logging and caching.
+
+Example:
+```javascript
+db.createCollection("logs", { capped: true, size: 100000 });
+```
+
+---
+
+### **15. What is the difference between `updateOne()` and `updateMany()`?**
+**Answer:**  
+- **`updateOne()`:** Updates only the first matching document.
+- **`updateMany()`:** Updates all matching documents.
+
+Example:
+```javascript
+// Update one document where age > 25
+db.collection_name.updateOne(
+  { age: { $gt: 25 } },
+  { $set: { status: "active" } }
+);
+
+// Update all documents where age > 25
+db.collection_name.updateMany(
+  { age: { $gt: 25 } },
+  { $set: { status: "active" } }
+);
+```
