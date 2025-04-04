@@ -36,7 +36,7 @@ Garbage collectors typically follow these steps:
 
 ---
 
-## Example: Garbage Collection in JavaScript
+### Example: Garbage Collection in JavaScript
 JavaScript uses a **Mark-and-Sweep** algorithm for garbage collection:
 
 ```javascript
@@ -47,7 +47,19 @@ function demoGC() {
     obj = null; // Now eligible for garbage collection
 }
 demoGC();
+```
 
+```python
+import gc
+
+class Demo:
+    def __del__(self):
+        print("Object is being deleted")
+
+obj = Demo()
+del obj  # Now eligible for garbage collection
+gc.collect()  # Manually trigger garbage collection
+```
 
 
 
