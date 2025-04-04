@@ -1461,6 +1461,261 @@ Usage:
 const EnhancedComponent = withLogger(MyComponent);
 ```
 
+
+# Redux
+
+Redux is a predictable state management library for JavaScript applications, commonly used with React. It provides a centralized store to manage the global state of an application and enforces strict rules for updating the state, ensuring consistency and predictability.
+
+This document covers key concepts, usage patterns, and frequently asked questions about Redux.
+
+
+### **1. What is Redux?**
+**Answer:**  
+Redux is a state management library that helps you manage global application state in a predictable way. It centralizes the state in a single "store" and uses pure functions (reducers) to update the state.
+
+Key features:
+- Centralized global state.
+- Predictable state updates using actions and reducers.
+- Unidirectional data flow.
+- Middleware support for handling asynchronous operations.
+
+---
+
+### **2. What are the core principles of Redux?**
+**Answer:**  
+Redux follows three core principles:
+1. **Single Source of Truth:** The entire state of the application is stored in a single object tree within the store.
+2. **State is Read-Only:** The only way to change the state is by dispatching an action.
+3. **Changes are Made with Pure Functions:** Reducers are pure functions that take the current state and an action, and return a new state.
+
+---
+
+### **3. How do you install Redux?**
+**Answer:**  
+You can install Redux and React-Redux (the official bindings for React) using npm or yarn:
+
+```bash
+npm install redux react-redux
+```
+
+or
+
+```bash
+yarn add redux react-redux
+```
+
+---
+
+### **4. What are the main components of Redux?**
+**Answer:**  
+The main components of Redux are:
+1. **Store:** Holds the application state.
+2. **Actions:** Plain JavaScript objects that describe what happened.
+3. **Reducers:** Functions that specify how the state changes in response to actions.
+4. **Dispatch:** A method to send actions to the store.
+5. **Selectors:** Functions to extract specific pieces of state from the store.
+
+---
+
+### **5. How do you create a Redux store?**
+**Answer:**  
+You can create a Redux store using the `createStore` function.
+
+Example:
+```javascript
+import { createStore } from 'redux';
+
+// Reducer
+const counterReducer = (state = { count: 0 }, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { count: state.count + 1 };
+    case 'DECREMENT':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+// Create store
+const store = createStore(counterReducer);
+
+export default store;
+```
+
+---
+
+## **Intermediate Questions**
+
+### **6. What is an action in Redux?**
+**Answer:**  
+An action is a plain JavaScript object that describes an event in the application. It must have a `type` property and can optionally include additional data (payload).
+
+Example:
+```javascript
+const incrementAction = {
+  type: 'INCREMENT',
+};
+
+const decrementAction = {
+  type: 'DECREMENT',
+};
+```
+
+---
+
+### **7. What is a reducer in Redux?**
+**Answer:**  
+A reducer is a pure function that takes the current state and an action, and returns a new state. It determines how the state should change based on the action type.
+
+Example:
+```javascript
+const initialState = { count: 0 };
+
+const counterReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { ...state, count: state.count + 1 };
+    case 'DECREMENT':
+      return { ...state, count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+```
+
+---
+
+### **8. How do you connect Redux to a React component?**
+**Answer:**  
+You can use the `useSelector` and `useDispatch` hooks from `react-redux` to connect Redux to functional components.
+
+Example:
+```javascript
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+const Counter = () => {
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
+      <button onClick={() => dispatch({ type: 'DECREMENT' })}>Decrement</button>
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+---
+
+### **9. What is middleware in Redux?**
+**Answer:**  
+Middleware is a function that sits between the dispatching of an action and the moment it reaches the reducer. It is commonly used to handle asynchronous operations or logging.
+
+Example with `redux-thunk`:
+```javascript
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+const store = createStore(counterReducer, applyMiddleware(thunk));
+```
+
+---
+
+## **Advanced Questions**
+
+### **10. What is Redux Toolkit?**
+**Answer:**  
+Redux Toolkit is the official, opinionated package for Redux development. It simplifies common Redux tasks like creating reducers, managing slices, and configuring the store.
+
+Example:
+```javascript
+import { createSlice, configureStore } from '@reduxjs/toolkit';
+
+// Slice
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: { count: 0 },
+  reducers: {
+    increment: (state) => {
+      state.count += 1;
+    },
+    decrement: (state) => {
+      state.count -= 1;
+    },
+  },
+});
+
+// Actions and reducer
+const { increment, decrement } = counterSlice.actions;
+const counterReducer = counterSlice.reducer;
+
+// Store
+const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
+
+export { store, increment, decrement };
+```
+
+---
+
+### **11. How do you handle asynchronous actions in Redux?**
+**Answer:**  
+You can handle asynchronous actions using middleware like `redux-thunk` or `redux-saga`.
+
+Example with `redux-thunk`:
+```javascript
+const fetchUser = (userId) => {
+  return async (dispatch) => {
+    dispatch({ type: 'FETCH_USER_REQUEST' });
+    try {
+      const response = await fetch(`/api/users/${userId}`);
+      const user = await response.json();
+      dispatch({ type: 'FETCH_USER_SUCCESS', payload: user });
+    } catch (error) {
+      dispatch({ type: 'FETCH_USER_FAILURE', error: error.message });
+    }
+  };
+};
+```
+
+---
+
+### **12. What are selectors in Redux?**
+**Answer:**  
+Selectors are functions used to extract specific pieces of state from the Redux store. They help encapsulate state structure and improve performance by memoizing computed values.
+
+Example:
+```javascript
+const selectCount = (state) => state.counter.count;
+
+const Counter = () => {
+  const count = useSelector(selectCount);
+  return <h1>Count: {count}</h1>;
+};
+```
+
+---
+
+### **13. What is the difference between Redux and Context API?**
+**Answer:**  
+| **Feature**           | **Redux**                              | **Context API**                       |
+|-----------------------|----------------------------------------|---------------------------------------|
+| **Boilerplate**       | High                                   | Low                                   |
+| **Performance**       | Optimized for large-scale apps         | May cause re-renders in large apps    |
+| **Global State**      | Designed for global state              | Primarily for passing props deeply   |
+| **Middleware**        | Supports middleware                    | No built-in middleware                |
+| **Use Case**          | Large-scale, complex apps              | Small to medium apps                  |
+
+
 # Zustand
 
 Zustand is a lightweight, simple, and efficient state management library for React applications. It provides a straightforward API for managing global state without the boilerplate typically associated with other state management solutions like Redux.
