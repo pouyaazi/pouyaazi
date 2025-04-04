@@ -1177,7 +1177,206 @@ console.log(numbers.filter(x => x % 2 === 0)); // [2, 4]
 console.log(numbers.reduce((sum, x) => sum + x, 0)); // 15
 ```
 
+# Event Loop Sequence in JavaScript
 
+The **Event Loop** is the mechanism that allows JavaScript, a single-threaded language, to handle asynchronous operations efficiently. It manages the execution of tasks by coordinating between the **Call Stack**, **Web APIs (or Node.js APIs)**, **Callback Queue**, and **Microtask Queue**. Below is a detailed explanation of the sequence in which the Event Loop operates.
+
+---
+
+## **1. Key Components of the Event Loop**
+
+### **1.1 Call Stack**
+- A stack (LIFO - Last In, First Out) that keeps track of function calls.
+- When a function is called, it's pushed onto the stack. When it finishes executing, it's popped off the stack.
+
+### **1.2 Web APIs (Browser) / C++ APIs (Node.js)**
+- Asynchronous operations like `setTimeout`, `fetch`, or DOM events are handled by the browser (Web APIs) or Node.js runtime, not the JavaScript engine itself.
+- These APIs manage tasks like timers, network requests, and event listeners.
+
+### **1.3 Callback Queue (Task Queue)**
+- Once an asynchronous operation completes, its callback is placed in the **callback queue** (also known as the **task queue**).
+- Examples:
+  - `setTimeout` callbacks.
+  - DOM event listeners.
+
+### **1.4 Microtask Queue**
+- A special queue for higher-priority tasks like **Promises** and `MutationObserver`.
+- Tasks in the microtasks queue are processed **before** the callback queue.
+
+### **1.5 Event Loop**
+- The Event Loop continuously checks the **call stack** and processes tasks from the **microtasks queue** and **callback queue** when the stack is empty.
+
+---
+
+## **2. Event Loop Sequence**
+
+The Event Loop follows a specific sequence to process tasks:
+
+### **Step 1: Execute Synchronous Code**
+- All synchronous code (e.g., `console.log`, function calls) is executed immediately and pushed onto the **call stack**.
+- Once the call stack is empty, the Event Loop moves to the next step.
+
+### **Step 2: Process Microtasks**
+- The Event Loop checks the **microtasks queue** for any pending tasks (e.g., Promises, `MutationObserver`).
+- If there are tasks in the microtasks queue, they are moved to the **call stack** and executed one by one.
+- **Important:** The microtasks queue is processed **before** the callback queue, even if new microtasks are added during execution.
+
+### **Step 3: Process Callbacks**
+- After the microtasks queue is empty, the Event Loop checks the **callback queue** for pending tasks (e.g., `setTimeout`, DOM events).
+- If there are tasks in the callback queue, they are moved to the **call stack** and executed one by one.
+
+### **Step 4: Repeat**
+- The Event Loop continuously repeats the above steps, ensuring that the call stack is always cleared before processing queued tasks.
+
+---
+
+## **3. Example of Event Loop Sequence**
+
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise");
+});
+
+console.log("End");
+```
+
+### **Execution Flow:**
+
+1. **Synchronous Code Execution:**
+   - `console.log("Start")` is executed and printed: **"Start"**.
+   - `setTimeout` is handed off to the Web API. After the timer expires (0ms), its callback (`console.log("Timeout")`) is moved to the **callback queue**.
+   - `Promise.resolve().then()` is a microtask. Its callback (`console.log("Promise")`) is moved to the **microtasks queue**.
+   - `console.log("End")` is executed and printed: **"End"**.
+
+2. **Process Microtasks:**
+   - The **call stack** is now empty. The Event Loop processes the **microtasks queue** first:
+     - `console.log("Promise")` is executed and printed: **"Promise"**.
+
+3. **Process Callbacks:**
+   - Next, the Event Loop processes the **callback queue**:
+     - `console.log("Timeout")` is executed and printed: **"Timeout"**.
+
+### **Output:**
+```
+Start
+End
+Promise
+Timeout
+```
+
+---
+
+## **4. Detailed Sequence Breakdown**
+
+Here’s a step-by-step breakdown of how the Event Loop processes tasks:
+
+1. **Synchronous Code:**
+   - Executes immediately and is pushed onto the **call stack**.
+   - Once completed, it’s removed from the stack.
+
+2. **Asynchronous Operations:**
+   - Handled by Web APIs (browser) or Node.js APIs.
+   - When the operation completes, its callback is moved to either the **callback queue** or **microtasks queue**.
+
+3. **Microtasks Queue:**
+   - Higher priority than the callback queue.
+   - Processed **before** the callback queue.
+   - Includes tasks like Promises and `MutationObserver`.
+
+4. **Callback Queue:**
+   - Lower priority than the microtasks queue.
+   - Processed **after** the microtasks queue is empty.
+   - Includes tasks like `setTimeout`, `setInterval`, and DOM events.
+
+5. **Event Loop:**
+   - Continuously checks the **call stack**.
+   - Moves tasks from the **microtasks queue** and **callback queue** to the **call stack** when the stack is empty.
+
+---
+
+## **5. Priority of Queues**
+
+The Event Loop prioritizes tasks in the following order:
+
+1. **Call Stack:** Executes synchronous code first.
+2. **Microtasks Queue:** Processes all microtasks (e.g., Promises) before moving to the next step.
+3. **Callback Queue:** Processes all tasks in the callback queue after the microtasks queue is empty.
+
+---
+
+## **6. Common Scenarios**
+
+### **Scenario 1: Nested Promises**
+```javascript
+console.log("Start");
+
+Promise.resolve().then(() => {
+  console.log("Promise 1");
+  Promise.resolve().then(() => {
+    console.log("Promise 2");
+  });
+});
+
+console.log("End");
+```
+
+#### Output:
+```
+Start
+End
+Promise 1
+Promise 2
+```
+
+#### Explanation:
+- `Promise 1` is added to the microtasks queue.
+- `Promise 2` is added to the microtasks queue **after** `Promise 1` starts executing.
+- All microtasks are processed before moving to the callback queue.
+
+---
+
+### **Scenario 2: Mixed Timers and Promises**
+```javascript
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise");
+});
+
+console.log("End");
+```
+
+#### Output:
+```
+Start
+End
+Promise
+Timeout
+```
+
+#### Explanation:
+- `Promise` is a microtask and is processed before the `setTimeout` callback in the callback queue.
+
+---
+
+## **7. Summary**
+
+The Event Loop ensures that JavaScript can handle asynchronous operations efficiently by following a strict sequence:
+
+1. Execute synchronous code on the **call stack**.
+2. Process all tasks in the **microtasks queue**.
+3. Process all tasks in the **callback queue**.
+4. Repeat the process.
 
 
 
