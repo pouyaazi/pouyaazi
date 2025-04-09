@@ -328,6 +328,89 @@ If the role involves fullstack development, you may need to discuss integrating 
 5. **How do you fetch data in Next.js?**
    - Use `getStaticProps` (SSG), `getServerSideProps` (SSR), or `getInitialProps`.
 
+
+Here's the complete markdown formatted list of React and Next.js hooks:
+
+### 🏗️ State Management
+- `useState` - Local component state
+  ```js
+  const [state, setState] = useState(initialValue);
+  ```
+- `useReducer` - Complex state logic
+  ```js
+  const [state, dispatch] = useReducer(reducer, initialState);
+  ```
+
+### ⚡ Side Effects
+- `useEffect` - Data fetching, subscriptions
+  ```js
+  useEffect(() => { /* effect */ }, [dependencies]);
+  ```
+- `useLayoutEffect` - Synchronous DOM measurements
+- `useInsertionEffect` - CSS-in-JS optimizations
+
+### 🎣 Refs & DOM
+- `useRef` - Persistent mutable values
+  ```js
+  const ref = useRef(initialValue);
+  ```
+- `useImperativeHandle` - Customize exposed refs
+
+### 🌐 Context
+- `useContext` - Access context values
+  ```js
+  const value = useContext(MyContext);
+  ```
+
+## 🚀 Next.js Specific Hooks
+
+### 🗺️ Routing
+- `useRouter` - Access router object
+  ```js
+  const router = useRouter();
+  ```
+- `usePathname` - Current URL path (App Router)
+- `useSearchParams` - Read/write URL params
+  ```js
+  const [params, setParams] = useSearchParams();
+  ```
+
+### 💾 Data Fetching
+- `useParams` - Dynamic route params
+- `useServerInsertedHTML` - SSR style injection
+
+### ✨ UI Patterns
+- `useOptimistic` - Optimistic UI updates
+  ```js
+  const [optimisticState, addOptimistic] = useOptimistic(state, updateFn);
+  ```
+
+## 🏆 Popular Custom Hooks
+
+### 📡 Data Fetching
+- `useSWR` (Vercel)
+  ```js
+  const { data, error } = useSWR('/api/data', fetcher);
+  ```
+- `useQuery` (TanStack Query)
+
+### 🎨 UI Utilities
+- `useIntersectionObserver` - Track element visibility
+- `useLocalStorage` - Sync state with localStorage
+
+### 🎬 Animation
+- `useSpring` (react-spring) - Animation primitives
+
+## 📊 Hook Usage Guide
+
+| Hook | Best For | Example Use Case |
+|------|----------|------------------|
+| `useState` | Simple state | Form inputs, toggle switches |
+| `useEffect` | Side effects | API calls, event listeners |
+| `useRouter` | Navigation | Route protection, query params |
+| `useOptimistic` | Instant feedback | Like buttons, form submissions |
+
+
 ---
 
 ## **4. NestJS**
