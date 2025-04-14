@@ -11,20 +11,10 @@ azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azara
 ---
 
 ### **Professional Summary**  
-**Backend Developer** with extensive experience in building scalable systems, optimizing performance, and leading technical teams. Specialized in:  
+**Senior Backend Developer** with **10+ years of experience** in designing and implementing high-performance, scalable systems. Specialized in:  
 - **Backend Architecture**: Designed and implemented high-performance systems from scratch (Node.js, PHP, Python).  
 - **Database Optimization**: Worked with MongoDB, Elasticsearch, and Redis to enhance speed and efficiency.  
-- **API Development**: Built RESTful APIs and integrated third-party services (Microsoft Teams, Blockchain, Payment Gateways).  
-- **DevOps & Security**: Implemented Wazuh for monitoring, PHP-FPM for scalability, and WordPress clustering.  
-- **Leadership**: Mentored junior developers and improved team productivity by **25%+**.  
-
----
-### **Key Achievements**  
-- **60% faster website performance** at Safirstores using Redis and Elasticsearch.  
-- Handled **5,000 requests/sec** with a custom WordPress cluster.  
-- Delivered a **video streaming platform in <1 month** at Moj Company.  
-- Built a **self-hosted notification system** with end-to-end encryption.  
-- Developed **data crawlers** for competitive analysis (Python/Scrapy).  
+- **DevOps & Security**: Implemented Wazuh for monitoring, PHP-FPM for scalability, and WordPress clustering.
 
 ---
 
@@ -68,12 +58,3 @@ azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azara
 
 5. **Real-Time Apps (Ride-Hailing, Chat, Notifications)**  
    - Used WebSockets/Socket.IO for low-latency communication.  
-
---- 
-
-### Education  
-**Bachelor of Software Engineering**  
-Islamic Azad University of Khomeini Shahr | 2019  
-
-**Master of Software Engineering**  
-Shahid Ashrafi Esfahani University | 2023  
