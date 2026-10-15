@@ -4,7 +4,7 @@ azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azara
 
 ## Professional Summary
 
-Experienced Full-Stack Developer with expertise in backend development (Node.js, Python) and frontend frameworks (Vue.js, React). Skilled in designing scalable APIs, integrating third-party services, and building efficient, user-friendly web applications. Passionate about system optimization, DevOps, and cloud infrastructure.
+Full-Stack Developer with extensive experience building scalable web applications, backend services, and data-driven platforms. Strong background in Node.js, NestJS, Python, React, and Vue.js, with hands-on experience in API architecture, database design, search infrastructure, performance optimization, and DevOps. Experienced in integrating third-party services and working with technologies including Redis, Elasticsearch, Meilisearch, Docker, and Linux. Recently expanded into AI-powered retrieval systems, including LLM integration, embeddings, vector search, and Retrieval-Augmented Generation (RAG).
 
 ## Work Experience
 
@@ -20,7 +20,7 @@ Safirstores | Jun 2023 – Feb 2025 | LINK [URL 🔗](https://safirstores.com)
 
 - Collaborated with frontend developers and DevOps teams to ensure seamless integration and optimal system performance.
 
-- Implemented PHP-FPM for the SafirStores magazine section, optimizing the WordPress-based system for high availability and scalability.
+- Implemented PHP-FPM for the SafirStores magazine section, optimizing the WordPress-based platform for high availability and scalability.
 
 - Designed and deployed a WordPress cluster, enabling efficient load distribution and fault tolerance.
 
@@ -38,7 +38,7 @@ RedCoNet LLC | Feb 2023 – Jun 2023
 
 Moj | Oct 2022 – Dec 2022 | LINK [URL 🔗](https://amnmoj.com)
 
-- Delivered a video streaming platform for an Omani company within less than one month, meeting tight deadlines and client expectations.
+- Delivered a video streaming platform for an Omani company in under one month, meeting tight deadlines and client expectations.
 
 - Developed RESTful APIs for the website and admin panel, enabling seamless data exchange and management functionalities.
 
@@ -80,19 +80,14 @@ Talamameh | Sep 2016 – Nov 2021 | LINK [URL 🔗](https://talarnameh.com)
 
 - Collaborated with frontend developers and designers to ensure seamless integration and optimal user experience.
 
-## Backend Developer
-
-## Backend Developer
-
-## Backend Developer
-
-## Backend Developer
-
-## Backend Developer
-
-## Software Developer & Co-Founder
-
 ## Projects
+
+## Hooshmart | AI-Powered Product Search and Retrieval
+
+- Worked with Meilisearch to build and evaluate product-search capabilities.
+- Explored and implemented embedding-based retrieval and vector-search workflows for semantic product discovery.
+- Worked with Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) concepts to support AI-assisted search and retrieval.
+- Evaluated how keyword search, semantic search, embeddings, and retrieval pipelines can be combined to improve product discovery.
 
 ## Online Cooking Learning Platform | Canada | Client Confidential
 
@@ -219,7 +214,7 @@ Talamameh | Sep 2016 – Nov 2021 | LINK [URL 🔗](https://talarnameh.com)
 
 - Designed and implemented a web crawler to extract and analyze competitor data in the steel and iron industry.
 
-- Used FastApi and Beautiful Soup for web scraping and data processing.
+- Used FastAPI and Beautiful Soup for web scraping and data processing.
 
 - Enhanced decision-making by providing real-time market insights.
 
@@ -256,28 +251,25 @@ Talamameh | Sep 2016 – Nov 2021 | LINK [URL 🔗](https://talarnameh.com)
 
 - Implemented secure payment solutions and automated workflows to streamline transactions and improve operational efficiency.
 
-- Optimized system performance to handle high user traffic and ensure a smooth experience.
+- Optimized system performance to handle high traffic volumes and ensure a smooth experience.
 
-## Skills
+## Technical Skills
 
-- Backend: Node.js (Express, NestJs), Python (Django, FastApi)
-
-- Frontend: Jquery, Vuejs (Quasar), React (Next.js)
-
-- Databases: MongoDB, MySQL, PostgreSQL, Redis, Elasticsearch
-
-- Tools: Git, Docker, FFMPEG, Minio, RabbitMQ
-
-- Server: Proxmox, VMware, Linux Ubuntu, AWS, Nginx, FPM, BashScript, Gitlab CI/CD, Grafana, Prometheus
-
-- Methodologies: Agile, Scrum, SOLID
+- **Backend Development:** Node.js, Express.js, NestJS, Python, Django, FastAPI
+- **Frontend Development:** React, Next.js, Vue.js, Quasar, jQuery
+- **Databases and Caching:** PostgreSQL, MySQL, MongoDB, Redis
+- **Search and Retrieval:** Elasticsearch, Meilisearch, vector search, semantic search, embeddings, Retrieval-Augmented Generation (RAG)
+- **LLM and AI Integration:** Large Language Models (LLMs), embedding-based retrieval, RAG workflows
+- **Messaging and Storage:** RabbitMQ, MinIO
+- **DevOps and Infrastructure:** Docker, Linux (Ubuntu), Proxmox, VMware, AWS, Nginx, PHP-FPM, Bash scripting, GitLab CI/CD
+- **Monitoring and Observability:** Grafana, Prometheus
+- **Media Processing:** FFmpeg
+- **Engineering Practices:** Git, Agile, Scrum, SOLID principles
 
 ## Education
 
-Islamic Azad University of Khomeini Shahr | 2019
-
+**Master of Software Engineering** 
 Shahid Ashrafi Esfahani University | 2023
 
-## Bachelor of Software Engineering
-
-## Master of Software Engineering
+**Bachelor of Software Engineering** 
+Islamic Azad University of Khomeini Shahr | 2019
