@@ -8,7 +8,7 @@ Full-Stack Developer with extensive experience building scalable web application
 
 ## Work Experience
 
-Safirstores | Jun 2023 – Feb 2025 | LINK [URL 🔗](https://safirstores.com)
+Safirstores | Jun 2023 – Oct 2026 | LINK [URL 🔗](https://safirstores.com)
 
 - Developed the entire backend system from scratch, including architecture design, database implementation, and API development.
 
