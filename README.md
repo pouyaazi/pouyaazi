@@ -1,60 +1,283 @@
-# Pouya Azaranmehr
-azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azaranmehr | Tehran, Iran  
+## Pouya Azaranmehr
 
----
-### **Technical Skills**  
-- **Backend**: Node.js (NestJS, Express), Python (FastAPI, Django), PHP
-- **Databases**: MongoDB, Elasticsearch, Redis, MySQL  
-- **DevOps**: Docker, Linux, Wazuh, Nginx, PHP-FPM  
-- **APIs**: REST, WebSockets, Blockchain  
-- **Tools**: Git, Scrapy, Pandas, WebRTC, Minio
----
+azaranmehrpouya@gmail.com | +989035020585 | linkedin.com/in/mohammad-pouya-azaranmehr | Tehran, Iran [URL 🔗](mailto:azaranmehrpouya@gmail.com)
 
-### **Professional Summary**  
-**Senior Backend Developer** with **10+ years of experience** in designing and implementing high-performance, scalable systems. Specialized in:  
-- **Backend Architecture**: Designed and implemented high-performance systems from scratch (Node.js, PHP, Python).  
-- **Database Optimization**: Worked with MongoDB, Elasticsearch, and Redis to enhance speed and efficiency.  
-- **DevOps & Security**: Implemented Wazuh for monitoring, PHP-FPM for scalability, and WordPress clustering.
+## Professional Summary
 
----
+Experienced Full-Stack Developer with expertise in backend development (Node.js, Python) and frontend frameworks (Vue.js, React). Skilled in designing scalable APIs, integrating third-party services, and building efficient, user-friendly web applications. Passionate about system optimization, DevOps, and cloud infrastructure.
 
-### **Work Experience**  
+## Work Experience
 
-**Backend Developer** | Safirstores | Jun 2023 – Feb 2025  
-- Designed and implemented the entire backend architecture from scratch.  
-- Optimized performance: **60% faster page loads** (Redis/Elasticsearch), **5,000 RPS capacity** (PHP-FPM/WordPress cluster).  
+Safirstores | Jun 2023 – Feb 2025 | LINK [URL 🔗](https://safirstores.com)
 
-**Backend Developer** | RedCoNet LLC | Feb 2023 – Jun 2023  
-- Built admin panel APIs and integrated **Wazuh** for real-time security monitoring.  
+- Developed the entire backend system from scratch, including architecture design, database implementation, and API development.
 
-**Backend Developer** | Moj | Oct 2022 – Dec 2022  
-- Delivered a **video streaming platform** in <1 month (REST APIs + frontend integration).  
+- Built and optimized a high-performance database from the ground up, ensuring scalability and efficiency.
 
-**Backend Developer** | Ahan Melal | Sep 2021 – Oct 2022  
-- Developed company website + admin panel. Created a **competitor data crawler** (Python).  
+- Increased website speed by 60% by implementing Redis for caching and real-time data processing.
 
-**Backend Developer** | Padideh Digital Agency | Apr 2019 – Nov 2021  
-- Led backend teams (**25% productivity gain**). Trained junior devs (1,300+ hours). Tech: **Node.js, MongoDB**.  
+- Enhanced search accuracy and functionality by integrating Elasticsearch into the backend system.
 
-**Co-Founder & Developer** | Talamameh | Sep 2016 – Nov 2021  
-- Built a **wedding reservation system** (Node.js/Express/MongoDB).  
+- Collaborated with frontend developers and DevOps teams to ensure seamless integration and optimal system performance.
+
+- Implemented PHP-FPM for the SafirStores magazine section, optimizing the WordPress-based system for high availability and scalability.
+
+- Designed and deployed a WordPress cluster, enabling efficient load distribution and fault tolerance.
+
+- Achieved 5,000 requests per second handling capacity by leveraging PHP-FPM optimizations and clustering techniques.
+
+RedCoNet LLC | Feb 2023 – Jun 2023
+
+- Developed custom APIs for the admin panel, enabling efficient data management and system control.
+
+- Implemented Wazuh, an open-source security monitoring tool, and integrated its APIs into the backend system for enhanced security and real-time monitoring.
+
+- Collaborated with the DevOps and security teams to ensure seamless integration and optimal performance.
+
+- Improved system security and monitoring capabilities, contributing to a more reliable and secure infrastructure.
+
+Moj | Oct 2022 – Dec 2022 | LINK [URL 🔗](https://amnmoj.com)
+
+- Delivered a video streaming platform for an Omani company within less than one month, meeting tight deadlines and client expectations.
+
+- Developed RESTful APIs for the website and admin panel, enabling seamless data exchange and management functionalities.
+
+- Collaborated with frontend developers and designers to ensure smooth integration and optimal performance.
+
+- Ensured high-quality code and timely delivery, resulting in positive client feedback and project success.
+
+Ahan Melal | Sep 2021 – Oct 2022 | LINK [URL 🔗](https://ahanmelal.com)
+
+- Developed the company’s website from scratch, including frontend and backend functionalities, ensuring a seamless user experience.
+
+- Built a custom admin panel to manage content, user data, and business operations efficiently.
+
+- Designed and implemented a web crawler to extract and analyze data from competitors’ websites in the steel and iron industry.
+
+- Collaborated with cross-functional teams to ensure timely delivery and alignment with business goals.
+
+Padideh Digital Agency | Apr 2019 – Nov 2021 | LINK [URL 🔗](https://padideit.com)
+
+- Delivered over 1,300 hours of programming training to young developers, focusing on backend technologies and best practices.
+
+- Programmed and managed servers for various company projects, ensuring high availability, security, and performance.
+
+- Led and mentored programming teams, overseeing project timelines, code quality, and team collaboration.
+
+- Utilized technologies such as Node.js, MongoDB, and Linux server management to deliver robust solutions.
+
+- Streamlined development processes, resulting in improved team productivity by 25%.
+
+Talamameh | Sep 2016 – Nov 2021 | LINK [URL 🔗](https://talarnameh.com)
+
+- Developed a reservation application for wedding halls and related wedding services, enabling seamless booking and scheduling for users.
+
+- Designed and implemented the Talamameh website, ensuring a user-friendly interface and smooth functionality.
+
+- Built a custom admin panel to manage reservations, user data, and business operations efficiently.
+
+- Utilized technologies such as Node.js, MongoDB, and Express to deliver scalable and high-performance solutions.
+
+- Collaborated with frontend developers and designers to ensure seamless integration and optimal user experience.
+
+## Backend Developer
+
+## Backend Developer
+
+## Backend Developer
+
+## Backend Developer
+
+## Backend Developer
+
+## Software Developer & Co-Founder
+
+## Projects
+
+## Online Cooking Learning Platform | Canada | Client Confidential
+
+- Designed and implemented a scalable backend system using Node.js (Express) and MongoDB.
+
+- Built an interactive frontend with Vue.js, ensuring a seamless user experience.
+
+- Integrated Microsoft Teams API for scheduling and managing live cooking sessions.
+
+## Elderly Nutrition Management System | Germany | Client Confidential
+
+- Developed a backend system for managing meal plans and dietary requirements for senior citizens.
+
+- Implemented RESTful APIs for seamless integration with frontend and mobile applications.
+
+- Ensured high performance and scalability using Node.js and MongoDB.
 
 
----
+## Vehicle Registration System for KBA | Germany | Client Confidential
+
+- Built a platform for vehicle registration and documentation management for the German Federal Motor Transport Authority (KBA).
+
+- Integrated Elasticsearch for fast and accurate data retrieval.
+
+- Improved system efficiency by 30% through database optimization.
+
+## Data Mining for Evolution - Italy | Client Confidential
+
+- Conducted data mining and analysis for Evolution, extracting actionable insights from large datasets.
+
+- Utilized Python and Pandas for data processing and visualization.
+
+- Delivered reports that contributed to a 20% increase in operational efficiency.
+
+## Cryptocurrency Investment Platform | Turkey | Client Confidential
+
+- Developed a backend system for a cryptocurrency investment platform, enabling secure transactions and portfolio management.
+
+- Integrated blockchain APIs for real-time cryptocurrency price tracking.
+
+- Ensured data security and compliance with financial regulations.
+
+## Online Food Ordering System | Germany | Client Confidential
+
+- Built a scalable backend for an online food ordering platform, supporting thousands of concurrent users.
+
+- Implemented Redis for caching and real-time order tracking.
+
+- Reduced order processing time by 40%.
+
+## Patient Data Management System | Sweden | Client Confidential
+
+- Developed a secure system for managing patient records and medical data.
+
+- Ensured compliance with GDPR and other data protection regulations.
+
+- Improved data retrieval speed by 50% using Elasticsearch.
+
+## Online Learning Platform - Australia | Client Confidential
+
+- Created a backend system for an online learning platform, supporting video streaming and course management.
+
+- Integrated payment gateways for seamless transactions.
+
+- Enhanced user experience by optimizing server response time.
+
+## Cryptocurrency Exchange Platform | Turkey | Client Confidential
+
+- Designed and implemented a backend for a cryptocurrency exchange, enabling secure trading and wallet management.
+
+- Integrated blockchain technology for real-time transaction processing.
+
+- Ensured high availability and scalability using microservices architecture.
+
+## Ride-Hailing App | Iran | LINK [URL 🔗](https://1820car20.ir)
+
+- Developed the backend for a ride-hailing application, supporting real-time ride tracking and payment processing.
+
+- Utilized WebSocket for real-time communication between drivers and passengers.
+
+- Improved system reliability by 25% through performance optimization.
+
+## Private Chat Application | Iran | Client Confidential
+
+- Built a secure and scalable backend for a private chat application.
+
+- Implemented end-to-end encryption using WebRTC and Socket.IO.
+
+- Ensured high availability and low latency for real-time messaging.
+
+## Gold and Jewelry Management System | Iran | LINK [URL 🔗](https://soroorgold.com)
+
+- Developed a backend system for managing gold and jewelry inventory and transactions.
+
+- Integrated barcode scanning for efficient inventory management.
+
+- Improved transaction accuracy by 30%.
+
+## Pet Care Application | Iran | LINK [URL 🔗](https://drpetservice.com)
+
+- Created a backend for a pet care application, supporting appointment scheduling and medical record management.
+
+- Integrated push notifications for appointment reminders.
+
+- Enhanced user engagement by 20% through feature optimization.
+
+## Task Management Application | Iran | LINK [URL 🔗](https://app.listekharid.com)
+
+- Designed and implemented a backend for a task management app, supporting task tracking and team collaboration.
+
+- Utilized Agile methodologies for iterative development and continuous improvement.
+
+- Improved team productivity by 15%.
+
+## Website Development In The Steel And Iron Industry | Iran | LINK [URL 🔗](https://ahan505.com)
+
+- Developed a responsive website for Ahan 505, ensuring a seamless user experience.
+
+- Implemented SEO best practices to improve search engine rankings.
+
+- Increased website traffic by 35% through performance optimization.
+
+## Competitor Data Crawler | Iran | Client Confidential
+
+- Designed and implemented a web crawler to extract and analyze competitor data in the steel and iron industry.
+
+- Used FastApi and Beautiful Soup for web scraping and data processing.
+
+- Enhanced decision-making by providing real-time market insights.
+
+## Self-Hosted Notification System | Iran | Client Confidential
+
+- Customized and localized Ntfy for a self-hosted push notification service.
+
+- Developed a scalable backend using Node.js and optimized message delivery.
+
+- Implemented user authentication and access control for secure notifications.
+
+- Enhanced UI/UX with Vue.js, ensuring seamless user interaction.
+
+- Optimized system performance for handling high-volume push notifications.
+
+## Competitor Web Scraping for Hotel & Home Booking (Python) | Iran | Client Confidential
 
 
-### **Notable Projects**  
-1. **Safirstores (E-commerce Backend)**  
-   - Designed the entire backend, integrated Elasticsearch, and achieved **60% speed boost**.  
+- Developed a web crawler using Python (Scrapy, BeautifulSoup, Selenium) to extract competitor pricing and availability data.
 
-2. **Vehicle Registration System (KBA, Germany)**  
-   - Streamlined documentation with Elasticsearch (**30% efficiency gain**).  
+- Implemented multi-threaded crawling for high-performance data collection.
 
-3. **Cryptocurrency Platforms (Turkey)**  
-   - Secured trading systems with blockchain APIs and real-time tracking.  
+- Designed a MongoDB/MySQL database schema for storing and analyzing scraped data.
 
-4. **Healthcare & Nutrition Apps (Germany/Sweden)**  
-   - GDPR-compliant patient data systems and meal-plan APIs.  
+- Automated data extraction with scheduled tasks (Celery, Cron Jobs) for real-time updates.
 
-5. **Real-Time Apps (Ride-Hailing, Chat, Notifications)**  
-   - Used WebSockets/Socket.IO for low-latency communication.  
+## Custom Gold Jewelry Manufacturing Platform | Iran | Client Confidential
+
+- Built the frontend using React & Next.js, ensuring a responsive and seamless user experience.
+
+- Designed and optimized the backend with NestJS & MongoDB, enabling efficient order processing, custom design management, and real-time tracking.
+
+- Integrated a real-time chat feature, allowing direct communication between customers and support teams for better engagement.
+
+- Implemented secure payment solutions and automated workflows to streamline transactions and improve operational efficiency.
+
+- Optimized system performance to handle high user traffic and ensure a smooth experience.
+
+## Skills
+
+- Backend: Node.js (Express, NestJs), Python (Django, FastApi)
+
+- Frontend: Jquery, Vuejs (Quasar), React (Next.js)
+
+- Databases: MongoDB, MySQL, PostgreSQL, Redis, Elasticsearch
+
+- Tools: Git, Docker, FFMPEG, Minio, RabbitMQ
+
+- Server: Proxmox, VMware, Linux Ubuntu, AWS, Nginx, FPM, BashScript, Gitlab CI/CD, Grafana, Prometheus
+
+- Methodologies: Agile, Scrum, SOLID
+
+## Education
+
+Islamic Azad University of Khomeini Shahr | 2019
+
+Shahid Ashrafi Esfahani University | 2023
+
+## Bachelor of Software Engineering
+
+## Master of Software Engineering
